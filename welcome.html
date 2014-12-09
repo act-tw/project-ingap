@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+
+
+	<style>
+		html,body {
+			height:100%;
+			width:100%;
+		}
+
+		body {
+			margin:0;
+		}
+		
+
+		.welcomeDiv {
+			height:100%;
+			width:100%;
+			margin: 0 auto;
+		}
+
+		.welcomeDiv>.sloganDiv {
+			position: relative;
+		}
+
+		.welcomeDiv>.sloganDiv>.sloganImg {
+			position: absolute;
+			right: 0;
+		}
+
+		.welcomeDiv>.logoDiv {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+		}
+
+		.welcomeDiv>.brandDiv {
+			position: absolute;
+			top:75%;
+			width:100%;
+		}
+	
+		.welcomeDiv>.brandDiv>div {
+			display: inline-block;
+			text-align: center;
+		}
+
+		.welcomeDiv>.scrollDownDiv {
+			background-image: url(http://www.ingapphoto.com.tw/INGAP/Open%20page/ScrollDown.png);
+			width: 105px;
+			height: 50px;
+			position: absolute;
+			top: 87.5%;
+			left: 50%;
+			margin-left: -52.5px;
+			margin-top: -25px;
+			cursor: pointer;
+		}
+		
+	</style>
+
+
+	<script>
+		$(function() {
+			var welcomeBg="http://www.ingapphoto.com.tw/INGAP/Open page/Background.png",
+			    sloganImg="http://www.ingapphoto.com.tw/INGAP/Open page/Slogan ideas.png",
+				logoImg="http://www.ingapphoto.com.tw/INGAP/Open page/Openlogo.png",
+				brandList=[
+					{
+						img:"http://www.ingapphoto.com.tw/INGAP/Open page/Brand/A.D.M.J.png",
+						url:"#1"
+					},
+					{
+						img:"http://www.ingapphoto.com.tw/INGAP/Open page/Brand/kitson.png",
+						url:"#2"
+					},
+					{
+						img:"http://www.ingapphoto.com.tw/INGAP/Open page/Brand/e.m.png",
+						url:"#3"
+					},
+					{
+						img:"http://www.ingapphoto.com.tw/INGAP/Open page/Brand/+Hotel.png",
+						url:"#4"
+					},
+					{
+						img:"http://www.ingapphoto.com.tw/INGAP/Open page/Brand/AMES BROS.png",
+						url:"#5"
+					},
+					{
+						img:"http://www.ingapphoto.com.tw/INGAP/Open page/Brand/TRUCK JEANS.png",
+						url:"#6"
+					},
+					{
+						img:"http://www.ingapphoto.com.tw/INGAP/Open page/Brand/JET.png",
+						url:"#7"
+					},
+					{
+						img:"http://www.ingapphoto.com.tw/INGAP/Open page/Brand/Kidrobot.png",
+						url:"#8"
+					},
+					{
+						img:"http://www.ingapphoto.com.tw/INGAP/Open page/Brand/Local Celebrity.png",
+						url:"#9"
+					},
+					{
+						img:"http://www.ingapphoto.com.tw/INGAP/Open page/Brand/Nitz Schneider.png",
+						url:"#10"
+					},
+					{
+						img:"http://www.ingapphoto.com.tw/INGAP/Open page/Brand/MiiA.png",
+						url:"#11"
+					},
+					{
+						img:"http://www.ingapphoto.com.tw/INGAP/Open page/Brand/Millie Loves Min.png",
+						url:"#12"
+					},
+					{
+						img:"http://www.ingapphoto.com.tw/INGAP/Open page/Brand/Lucca Couture.png",
+						url:"#13"
+					},
+					{
+						img:"http://www.ingapphoto.com.tw/INGAP/Open page/Brand/THEME.png",
+						url:"#14"
+					},
+					{
+						img:"http://www.ingapphoto.com.tw/INGAP/Open page/Brand/Tolani .png",
+						url:"#15"
+					}
+				];
+
+			function url(url) {
+				return "url(" + encodeURI(url) + ")";
+			}
+
+			
+
+			(function() {
+				$(".welcomeDiv").css("background-image",url(welcomeBg));
+				$(".sloganImg").attr("src",sloganImg);
+				$(".logoImg").attr("src",logoImg).load(function() {
+					$(this).css({
+						"margin-top": -$(this).height()/2,
+						"margin-left": -$(this).width()/2
+					});
+				});
+				var html="";
+				var count=0;
+				brandList.map(function(a){
+					html+="<div><a href=\"" + a.url + "\"><img src=\"" + a.img + "\"></a></div>";
+					count++;
+				});
+				$(".brandDiv").html(html);
+				$(".brandDiv>div").css("width",100/count+"%");
+				$(".brandDiv>div>a>img").load(function() {
+					$(this).parent().parent().css("min-width",$(this).width());
+					if ($(".brandDiv").attr("style")===undefined) {
+						$(".brandDiv").css("margin-top",-$(".brandDiv").height()/2);
+					}
+				});
+			})(); //initializing
+		});
+	</script>
+
+
+	<div class="welcomeDiv">
+		<div class="sloganDiv">
+			<img class="sloganImg">
+		</div>
+		<div class="logoDiv">
+			<img class="logoImg">
+		</div>
+		<div class="brandDiv">&nbsp;</div>
+		<div class="scrollDownDiv">&nbsp;</div>
+	</div>
+
+
+
+
+	
+</body>
+</html>

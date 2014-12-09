@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+
+	<style>
+		body {
+			margin:0;
+			height:5000px; /*test*/
+		}
+
+		.headerDiv {
+			height:220px;
+			background-color:#eeeeec;
+			position: relative;
+		}
+
+		.headerDiv>.toolbar {
+			overflow: hidden;
+			position: fixed;
+			right: 100px;
+			top: 20px;
+		}
+
+		.headerDiv>.toolbar>* {
+			float:left;
+		}
+
+		.headerDiv>.toolbar>.search {
+			height: 20px;
+			margin: 0 15px 0 5px;
+			padding: 0 20px;
+			border: 0;
+			background-color: transparent;
+			border-bottom: 1px solid #393a3a;
+			outline: none;
+		}
+
+		.headerDiv>.toolbar>a {
+			font-size: 15px;
+			font-family: arial;
+			font-weight: bold;
+			color: #393a3a;
+			margin-top: 2px;
+			text-decoration: none;
+		}
+
+		.headerDiv>.toolbar>span {
+			margin: 0 15px;
+		}
+
+		.headerDiv>.logo {
+			padding-top: 35px;
+			padding-bottom: 9px;
+		}
+
+		.headerDiv>.logo>a.biglogo {
+			height: 150px;
+			width: 300px;
+			display: block;
+			margin: 0 auto;
+		}
+
+		.headerDiv>.logo>a.smalllogo {
+
+			display: none;
+		}
+
+		.headerDiv>.menu {
+			position: absolute;
+			bottom: 0;
+			margin: 0 auto;
+			width: 100%;
+			text-align: center;
+			padding: 0;
+			transition: background-color 0.5s;
+		}
+
+		.headerDiv>.menu>a {
+			text-decoration: none;
+			height: 26px;
+			display: inline-block;
+			line-height: 26px;
+			color: #393a3a;
+			font-size: 14px;
+			padding: 0 10px;
+			font-family: arial;
+			transition: background-color 0.5s,color 0.5s;
+		}
+
+		.headerDiv>.menu>a:hover {
+			background-color: #393a3a;
+			color:white;
+			transition: background-color 0.5s,color 0.5s;
+		}
+
+		.headerDiv>.menu>span {
+			height: 26px;
+			display: inline-block;
+			line-height: 28px;
+			font-size: 12px;
+		}
+
+
+
+
+
+
+
+		.headerDiv.dark {
+			height:78px;
+			background-color:rgba(238,238,236,0.8);
+			position:fixed;
+			width: 100%;
+		}
+
+		.headerDiv.dark>.logo {
+			padding-top: 6px;
+			padding-bottom: 0;
+			margin-left:100px;
+		}
+
+		.headerDiv.dark>.logo>a.biglogo {
+			display: none;
+		}
+
+		.headerDiv.dark>.logo>a.smalllogo {
+			display: block;
+		}
+
+		.headerDiv.dark>.menu {
+			position:static;
+			background-color: #393a3a;
+			transition: background-color 0.5s;
+		}
+
+		.headerDiv.dark>.menu>a {
+			color: white;
+			transition: background-color 0.5s,color 0.5s;
+		}
+
+		.headerDiv.dark>.menu>a:hover {
+			background-color: white;
+			color:#393a3a;
+			transition: background-color 0.5s,color 0.5s;
+		}
+
+		.headerDiv.dark>.menu>span {
+			color: white;
+		}
+
+	</style>
+
+	<script>
+ 		$(function() {
+ 			$("span[text]").on("mouseenter mouseleave",function(e) {
+				var text = $(this).text();
+				$(this).text($(this).attr("text"));
+				$(this).attr("text",text);
+ 			});
+
+ 			$(window).scroll(function() {
+ 				if ($(window).scrollTop()>142 ) {
+ 					if (!$(".headerDiv").hasClass("dark")) {
+ 						$(".headerDiv").addClass("dark");	
+ 					}
+ 				} 
+ 				if ($(window).scrollTop()<=142 ) {
+ 					if ($(".headerDiv").hasClass("dark")) {
+ 						$(".headerDiv").removeClass("dark");
+ 					}
+ 				}
+ 			});
+ 		});
+	</script>
+
+
+	<div class="headerDiv">
+		<div class="toolbar">
+			<img src="http://www.ingapphoto.com.tw/INGAP/Top/Search.png">
+			<input class="search" type="text" placeholder="SEARCH">
+			<a href="#LOGIN"><span text="會員">LOGIN</span></a>
+			<span>|</span>
+			<a href="#BASKET"><span text="購物車">BASKET</span>(<span>0</span>)</a>
+			<span>|</span>
+			<a href="#WISHLIST"><span text="購買清單">WISHLIST</span>(<span>0</span>)</a>
+		</div>
+		<div class="logo">
+			<a class="biglogo" href="../Shop"><img src="http://www.ingapphoto.com.tw/INGAP/Top/INGAPlogo_b.png"></a>
+			<a class="smalllogo" href="../Shop"><img src="http://www.ingapphoto.com.tw/INGAP/Top/INGAPlogo_s.png"></a>
+		</div>
+		<div class="menu">
+			<a href="#1">A.D.M.J</a>
+			<span>|</span>
+			<a href="#2">kitson</a>
+			<span>|</span>
+			<a href="#3">e.m.</a>
+			<span>|</span>
+			<a href="#4">+Hotel</a>
+			<span>|</span>
+			<a href="#5">AMES BROS</a>
+			<span>|</span>
+			<a href="#6">TRUCK JEANS</a>
+			<span>|</span>
+			<a href="#7">JET</a>
+			<span>|</span>
+			<a href="#8">Kidrobot</a>
+			<span>|</span>
+			<a href="#9">Local Celebrity</a>
+			<span>|</span>
+			<a href="#10">Nitz Schneider</a>
+			<span>|</span>
+			<a href="#11">MiiA</a>
+			<span>|</span>
+			<a href="#12">Millie Loves Min</a>
+			<span>|</span>
+			<a href="#13">Lucca Couture</a>
+			<span>|</span>
+			<a href="#14">THEME</a>
+			<span>|</span>
+			<a href="#15">Thlani</a>
+			
+		</div>
+	</div>
+
+
+
+
+
+</body>
+</html>

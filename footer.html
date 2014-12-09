@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.hoverintent/2013.03.11/hoverintent.min.js"></script>
+</head>
+<body>
+
+<style>
+	#footer { background-color: rgba(0,0,0,0.8); color: #D2D2D2; font-size: 11px; height: 30px; position: fixed; left: 0; right: 0; bottom: 0; padding: 0px 10px; padding-top: 0px; width: 100%; z-index: 210; letter-spacing: 1px; min-width: 1000px; cursor: pointer; }
+    #footer a, #footer p { text-decoration: none; color: #9D9D9D; }
+    #footer a a:hover { color: #fff; }
+    #footer .copyright { font-size: 9px; line-height: 30px; height: 30px; vertical-align: middle; }
+    #footer div.footerright { position: absolute; top: 0px; right: 30px; height: 30px; padding: 0 11px; text-align: center; }
+    #footer #footer_openclose { float: left; width: 30px; font-size: 20px; line-height: 17px; text-align: center; cursor: pointer; height: 200px; margin-top: -3px; }
+    #footer #footer_menu { padding-top: 8px; }
+	#footer_menu .bottom_menu_block { float: left; margin-right: 5px; padding: 0 16px; border-left: 1px solid #D2D2D2; }
+    #footer_menu .bottom_menu_block h1 { margin: 0 0 0px 0; padding: 0; list-style: none; font-size: 10px; color: #D2D2D2; font-family: arial;font-weight: normal; }
+    #footer_menu .bottom_menu_block p { margin: 10px 0 0 0; overflow: hidden; }
+    #footer_menu .bottom_menu_block p a { display: block; }
+    #footer_menu .bottom_menu_block .subblock { display: none; padding-top: 10px; }
+    #footer_menu .bottom_menu_block a { margin-right: 5px; }
+    #footer_menu .bottom_menu_block a:hover { color: #fff; }
+	#footer_menu .block1 { width: 210px; }
+    #footer_menu .block1 .p1 { font-size: 16px; color: #D2D2D2; }
+	#footer_menu .block2 { width: 195px; }
+	#footer_menu .block3 { width: 250px; }
+	#footer_menu .block4 { width: 160px; }
+	#footer_menu .block2 .l_cht { display: inline-block; width: 70px; }
+	#footer_menu .block3 .l_cht { display: inline-block; width: 120px; }
+	#footer_menu .block4 .l_cht { display: inline-block; width: 70px; }
+	#footer { text-align: center; min-width: initial;}
+	#footer_menu { display: inline-block; margin: 0 auto; min-width: initial; }
+	#footer_menu .bottom_menu_block { margin-bottom: 20px; margin-left: 30px; margin-right: -25px; }
+	#footer #footer_openclose { position: absolute; }
+	#footer_menu .bottom_menu_block h1 { text-align: left; }
+	#footer_menu .bottom_menu_block .subblock { text-align: left; }
+</style>
+
+<script>
+	$(function() {
+		function checkcopyright() {
+			if ($(window).width()<=1240) {
+				$(".footerright").hide();
+			} else {
+				$(".footerright").show();
+			}
+		}
+		$("#footer").on({
+			mouseenter: function() {
+				setTimeout(function() {
+					if ($(window).width()<=1240) {
+						$("#footer").animate({"height":$("#footer_menu").height()+65});
+					}
+				},925);
+			},
+			mouseleave: function() {
+				setTimeout(function() {
+					if ($(window).width()<=1240) {
+						checkcopyright();
+					}
+				},400);
+			}
+		});
+		$(window).resize(function() {
+			checkcopyright();
+		});
+		checkcopyright();
+	    function showFooter() {
+	        $('#footer div.footerright').hide();
+	        $('.block1').animate({
+	            'width': '210px'
+	        }, 250);
+	        $('.block2').animate({
+	            'width': '195px'
+	        }, 250);
+	        $('.block3').animate({
+	            'width': '250px'
+	        }, 250);
+	        $('.block4').animate({
+	            'width': '160px'
+	        }, 250);
+	        $('#footer_menu h1').animate({
+	            'font-size': '16px'
+	        }, 250, function () {
+	            $('#footer').stop(false, false).animate({
+	                height: '290px',
+	                'padding-top': '15px'
+	            }, 250);
+	            $('#footer div.footerright').show().css({
+	                "bottom": "15px", "width": "100%", "right": "0"
+	            }).css("top", "auto");
+	        });
+	        $('.subblock').show();
+	        $('#footer_menu .block5').animate({
+	            'margin-top': '0px'
+	        }, 200);
+	        $("#footer_openclose").text("-");
+	        $("#footer").css({ "cursor": "default" });
+	
+	    }
+	    function hideFooter() {
+	        $('#footer div.footerright').hide();
+	        $('.block1,.block2,.block3,.block4').animate({
+	            'width': '90px'
+	        }, 250);
+	        $('#footer_menu h1').animate({
+	            'font-size': '10px'
+	        }, 250, function () {
+	            $('#footer').stop(false, false).animate({
+	                height: '30px',
+	                'padding-top': '0px'
+	            }, 250);
+	            $('#footer div.footerright').css({ "right": "30px", "top": "0px", "width": "", "bottom": "" }).show();
+	        });
+	        $('.subblock').hide();
+	        $("#footer_openclose").text("+");
+	        $("#footer").css({ "cursor": "pointer" });
+	    }
+	    $("#footer").hoverIntent({
+	        interval: 200,
+	        over: showFooter,
+	        timeout: 0,
+	        out: hideFooter
+	    });
+	});
+</script>
+
+
+<div id="footer">
+	<div id="footer_menu">
+		<div id="footer_openclose">+</div>
+		<div class="bottom_menu_block">
+			<h1>ABOUT US</h1>
+			<div class="subblock block2">
+				<p><a href="../Common/syNsShow.aspx?id=6&amp;g=qaGroup0"><span class="l_cht">最新消息</span><span class="l_en">HOT NEWS</span></a></p>
+				<p><a href="../Common/syNsShow.aspx?id=5&amp;g=qaGroup0"><span class="l_cht">關於我們</span><span class="l_en">ABOUT INGAP</span></a></p>
+				<p><a href="../Common/syNsShow.aspx?id=10&amp;g=qaGroup0"><span class="l_cht">企業合作</span><span class="l_en">PARTNERSHIP</span></a></p>
+				<p><a href="../Common/syNsShow.aspx?id=11&amp;g=qaGroup0"><span class="l_cht">隱私權保護</span><span class="l_en">PRIVACY POLICY</span></a></p>
+			</div>
+		</div>
+		<div class="bottom_menu_block">
+			<h1>HOW TO ORDER</h1>
+			<div class="subblock block3">
+				<p><a href="../Common/syNsShow.aspx?id=13&amp;g=qaGroup1"><span class="l_cht">新手上路</span><span class="l_en">HOW TO ORDER</span></a></p>
+				<p><a href="../Common/syNsShow.aspx?id=19&amp;g=qaGroup1"><span class="l_cht">常見問題</span><span class="l_en">FAQS</span></a></p>
+				<p><a href="../Common/syNsShow.aspx?id=15&amp;g=qaGroup1"><span class="l_cht">多元付款</span><span class="l_en">PAYMENT</span></a></p>
+				<p><a href="../Common/syNsShow.aspx?id=16&amp;g=qaGroup1"><span class="l_cht">配送方式</span><span class="l_en">DELIVERY</span></a></p>
+				<p><a href="../Common/syNsShow.aspx?id=17&amp;g=qaGroup1"><span class="l_cht">退換貨資訊</span><span class="l_en">RETURNS</span></a></p>
+				<p><a href="../Common/syNsShow.aspx?id=18&amp;g=qaGroup1"><span class="l_cht">電子發票託管流程</span><span class="l_en">INVOICE</span></a></p>
+				<p><a href="../Common/syNsShow.aspx?id=14&amp;g=qaGroup1"><span class="l_cht">電話訂購</span><span class="l_en">ORDER BY PHONE</span></a></p>
+			</div>
+		</div>
+		<div class="bottom_menu_block">
+			<h1>MEMBERS</h1>
+			<div class="subblock block4">
+				<p><a href="../Common/CreateMember.aspx"><span class="l_cht">加入會員</span><span class="l_en">JOIN</span></a></p>
+				<p><a href="../Member/findorder.aspx"><span class="l_cht">訂單查詢</span><span class="l_en">ORDERS</span></a></p>
+				<p><a href="../Common/syNsShow.aspx?id=23&amp;g=qaGroup2"><span class="l_cht">會員優惠</span><span class="l_en">BENEFITS</span></a></p>
+				<p><a href="../Common/syNsShow.aspx?id=24&amp;g=qaGroup2"><span class="l_cht">客服信箱</span><span class="l_en">MAIL TO US</span></a></p>
+			</div>
+		</div>
+		<div class="bottom_menu_block">
+			<h1>CUSTOMER SERVICE</h1>
+			<div class="subblock block1">
+				<p class="p1">02-2765-1860</p>
+				<p>&lt; weekdays &gt;</p>
+				<p>09:30-12:30 / 13:30-18:30</p>
+				<p>EMAIL :<a href="mailto:andriaservice@gmail.com">andriaservice@gmail.com</a></p>
+			</div>
+		</div>
+	</div>
+	<div class="footerright">
+		<div class="copyright">&copy; Copyright 2014 Andria. All Right Resvered.</div>
+	</div>
+</div>
+
+
+	
+</body>
+</html>
