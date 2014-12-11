@@ -3,9 +3,13 @@
 <head>
 	<meta charset="UTF-8">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.hoverintent/2013.03.11/hoverintent.min.js"></script>
+	
 </head>
 <body>
+
+
+
+
 
 <style>
 	#footer { background-color: rgba(0,0,0,0.8); color: #D2D2D2; font-size: 11px; height: 30px; position: fixed; left: 0; right: 0; bottom: 0; padding: 0px 10px; padding-top: 0px; width: 100%; z-index: 210; letter-spacing: 1px; min-width: 1000px; cursor: pointer; }
@@ -36,8 +40,9 @@
 	#footer #footer_openclose { position: absolute; }
 	#footer_menu .bottom_menu_block h1 { text-align: left; }
 	#footer_menu .bottom_menu_block .subblock { text-align: left; }
+	#container { padding-bottom: 30px; }
 </style>
-
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.hoverintent/2013.03.11/hoverintent.min.js"></script>
 <script>
 	$(function() {
 		function checkcopyright() {
@@ -128,37 +133,40 @@
 </script>
 
 
+
+
+
 <div id="footer">
 	<div id="footer_menu">
 		<div id="footer_openclose">+</div>
 		<div class="bottom_menu_block">
 			<h1>ABOUT US</h1>
 			<div class="subblock block2">
-				<p><a href="../Common/syNsShow.aspx?id=6&amp;g=qaGroup0"><span class="l_cht">最新消息</span><span class="l_en">HOT NEWS</span></a></p>
-				<p><a href="../Common/syNsShow.aspx?id=5&amp;g=qaGroup0"><span class="l_cht">關於我們</span><span class="l_en">ABOUT INGAP</span></a></p>
-				<p><a href="../Common/syNsShow.aspx?id=10&amp;g=qaGroup0"><span class="l_cht">企業合作</span><span class="l_en">PARTNERSHIP</span></a></p>
-				<p><a href="../Common/syNsShow.aspx?id=11&amp;g=qaGroup0"><span class="l_cht">隱私權保護</span><span class="l_en">PRIVACY POLICY</span></a></p>
+				<p><a href="#HOT_NEWS"><span class="l_cht">最新消息</span><span class="l_en">HOT NEWS</span></a></p>
+				<p><a href="#ABOUT_INGAP"><span class="l_cht">關於我們</span><span class="l_en">ABOUT INGAP</span></a></p>
+				<p><a href="#PARTNERSHIP"><span class="l_cht">企業合作</span><span class="l_en">PARTNERSHIP</span></a></p>
+				<p><a href="#PRIVACY_POLICY"><span class="l_cht">隱私權保護</span><span class="l_en">PRIVACY POLICY</span></a></p>
 			</div>
 		</div>
 		<div class="bottom_menu_block">
 			<h1>HOW TO ORDER</h1>
 			<div class="subblock block3">
-				<p><a href="../Common/syNsShow.aspx?id=13&amp;g=qaGroup1"><span class="l_cht">新手上路</span><span class="l_en">HOW TO ORDER</span></a></p>
-				<p><a href="../Common/syNsShow.aspx?id=19&amp;g=qaGroup1"><span class="l_cht">常見問題</span><span class="l_en">FAQS</span></a></p>
-				<p><a href="../Common/syNsShow.aspx?id=15&amp;g=qaGroup1"><span class="l_cht">多元付款</span><span class="l_en">PAYMENT</span></a></p>
-				<p><a href="../Common/syNsShow.aspx?id=16&amp;g=qaGroup1"><span class="l_cht">配送方式</span><span class="l_en">DELIVERY</span></a></p>
-				<p><a href="../Common/syNsShow.aspx?id=17&amp;g=qaGroup1"><span class="l_cht">退換貨資訊</span><span class="l_en">RETURNS</span></a></p>
-				<p><a href="../Common/syNsShow.aspx?id=18&amp;g=qaGroup1"><span class="l_cht">電子發票託管流程</span><span class="l_en">INVOICE</span></a></p>
-				<p><a href="../Common/syNsShow.aspx?id=14&amp;g=qaGroup1"><span class="l_cht">電話訂購</span><span class="l_en">ORDER BY PHONE</span></a></p>
+				<p><a href="#HOW_TO_ORDER"><span class="l_cht">新手上路</span><span class="l_en">HOW TO ORDER</span></a></p>
+				<p><a href="#FAQS"><span class="l_cht">常見問題</span><span class="l_en">FAQS</span></a></p>
+				<p><a href="#PAYMENT"><span class="l_cht">多元付款</span><span class="l_en">PAYMENT</span></a></p>
+				<p><a href="#DELIVERY"><span class="l_cht">配送方式</span><span class="l_en">DELIVERY</span></a></p>
+				<p><a href="#RETURNS"><span class="l_cht">退換貨資訊</span><span class="l_en">RETURNS</span></a></p>
+				<p><a href="#INVOICE"><span class="l_cht">電子發票託管流程</span><span class="l_en">INVOICE</span></a></p>
+				<p><a href="#ORDER_BY_PHONE"><span class="l_cht">電話訂購</span><span class="l_en">ORDER BY PHONE</span></a></p>
 			</div>
 		</div>
 		<div class="bottom_menu_block">
 			<h1>MEMBERS</h1>
 			<div class="subblock block4">
-				<p><a href="../Common/CreateMember.aspx"><span class="l_cht">加入會員</span><span class="l_en">JOIN</span></a></p>
-				<p><a href="../Member/findorder.aspx"><span class="l_cht">訂單查詢</span><span class="l_en">ORDERS</span></a></p>
-				<p><a href="../Common/syNsShow.aspx?id=23&amp;g=qaGroup2"><span class="l_cht">會員優惠</span><span class="l_en">BENEFITS</span></a></p>
-				<p><a href="../Common/syNsShow.aspx?id=24&amp;g=qaGroup2"><span class="l_cht">客服信箱</span><span class="l_en">MAIL TO US</span></a></p>
+				<p><a href="#JOIN"><span class="l_cht">加入會員</span><span class="l_en">JOIN</span></a></p>
+				<p><a href="#ORDERS"><span class="l_cht">訂單查詢</span><span class="l_en">ORDERS</span></a></p>
+				<p><a href="#BENEFITS"><span class="l_cht">會員優惠</span><span class="l_en">BENEFITS</span></a></p>
+				<p><a href="#MAIL_TO_US"><span class="l_cht">客服信箱</span><span class="l_en">MAIL TO US</span></a></p>
 			</div>
 		</div>
 		<div class="bottom_menu_block">
@@ -175,6 +183,8 @@
 		<div class="copyright">&copy; Copyright 2014 Andria. All Right Resvered.</div>
 	</div>
 </div>
+
+
 
 
 	
