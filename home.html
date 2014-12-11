@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+
+
+	<style>
+		body {
+			margin: 0;
+		}
+
+		#container {
+			width: 100%;
+		}
+
+		.homeDiv>.blockDiv1>.box>a {
+			position: absolute;
+		}
+
+		.homeDiv>.blockDiv1>.control {
+			margin-top: 55px;
+			margin-right: 70px;
+		}
+
+		.homeDiv>.blockDiv1>.control>div {
+			float: right;
+		}
+
+		.homeDiv>.blockDiv1>.control>.flag {
+			background-image: url(http://www.ingapphoto.com.tw/INGAP/Home/Top/a2.png);
+			width:27px;
+			height:34px;
+			cursor: pointer;
+		}
+
+		.homeDiv>.blockDiv1>.control>.flag.left {
+			background-image: url(http://www.ingapphoto.com.tw/INGAP/Home/Top/a1.png);
+		}
+
+		.homeDiv>.blockDiv1>.control>.navinum {
+			margin-top:-14px;
+		}
+
+		.homeDiv>.blockDiv1>.control>.navinum>span {
+			font-size: 40px;
+			font-family: arial;
+			margin: 0 6px;
+		}
+
+		.homeDiv>.blockDiv1>.control>.navinum>.current {
+			font-size: 50px;
+		}
+
+		.homeDiv>.blockDiv1>.control>.navinum>.spline {
+			color: #8B8B8B;
+		}
+
+		.homeDiv>.blockDiv1>.control>.navidot {
+			margin-right: 20px;
+			max-width: 155px;
+		}
+
+		.homeDiv>.blockDiv1>.control>.navidot>div {
+			width: 11px;
+			height: 11px;
+			background-color: #8B8B8B;
+			float: left;
+			border-radius: 11px;
+			margin: 3px 3px;
+			cursor: pointer;
+		}
+
+		.homeDiv>.blockDiv1>.control>.navidot>div.active {
+			background-color: black;
+		}
+	</style>
+	<script>
+		$(function() {
+			var data=[
+				{
+					img:"http://www.ingapphoto.com.tw/INGAP/Home/Top/1900x870.jpg",
+					url:"#1"
+				},
+				{
+					img:"http://file25.mafengwo.net/M00/0B/6C/wKgB4lIpPMmAe_yIABj1H6U4o4A73.jpeg",
+					url:"#2"
+				},
+				{
+					img:"http://www.tomasitourism.com/img/sfondo/04.jpg",
+					url:"#3"
+				},
+				{
+					img:"http://www.realconnex.com/theme/Realconnex/homepage/img/main-image.jpg",
+					url:"#4"
+				}												
+			];
+
+
+
+
+			var $blockDiv1=$(".homeDiv>.blockDiv1");
+
+			(function() {
+				var	$box=$blockDiv1.find(">.box"),
+					html="";
+				for(var i=data.length;i--;) {
+					html+="<a href=\"" + data[i].url +"\"><img src=\"" + data[i].img + "\"></a>";
+				}
+				$box.html(html);
+				var $imgs=$box.find(">a>img");
+				$(window).resize(function() {
+					$imgs.width($(window).width());
+					$box.removeAttr("style");
+					$box.height($imgs.height());
+				}).resize();
+				$imgs.load(function() {
+					$box.height($(this).height());
+				});
+			})();
+
+			(function() {
+				function prev() {
+					var $a = $blockDiv1.find(">.box>a");
+					if (!$a.is(":animated")) {
+						if ($a.filter(":visible").length === $a.length) {
+							$a.not(":first").not(":last").hide();
+							$a.filter(":last").fadeOut(delay,function() {
+								getCurrentIndex();
+							});
+						} else {
+							$a.filter(":hidden:first").fadeIn(delay,function() {
+								getCurrentIndex();
+							});
+						}
+					}
+				}
+				function next() {
+					var $a = $blockDiv1.find(">.box>a");
+					if (!$a.is(":animated")) {
+						if ($a.filter(":visible").length>1) {
+							$a.filter(":visible:last").fadeOut(delay,function() {
+								getCurrentIndex()
+							});
+						} else {
+							$a.filter(":first").fadeOut(delay);
+							$a.filter(":last").fadeIn(delay,function() {
+								$a.show();
+								getCurrentIndex();
+							});
+						}
+					}
+				}
+				function move(index) {
+					var $a = $blockDiv1.find(">.box>a");
+					if (!$a.is(":animated")) {
+						index = ($a.length-1)-index;
+						var formIndex=$a.filter(":visible:last").index();
+						if (formIndex > index) {
+							$a.hide();
+							$a.eq(formIndex).show();
+							$a.eq(index).show();
+							$a.eq(formIndex).fadeOut(delay,function() {
+								$a.filter(":lt(" + index +")").show();
+								getCurrentIndex();
+							});
+						}
+						if (formIndex < index) {
+							$a.eq(index).fadeIn(delay,function() {
+								$a.filter(":lt(" + index +")").show();
+								getCurrentIndex();
+							});
+						}
+					}
+				}	
+				function getCurrentIndex() {
+					var $a = $blockDiv1.find(">.box>a");
+					var index = $a.length-$a.filter(":visible:last").index();
+					$control.find(".current").text((index<10? "0":"")+index);
+					$control.find(".navidot>div.active").removeClass();
+					$control.find(".navidot>div").eq(index-1).addClass("active");
+				}	
+				function run() {
+					next();
+					setTimeout(run,5000);
+				}		
+				var $control=$blockDiv1.find(".control"),
+					delay=1000;
+				$control.find(".total").text((data.length<10? "0" : "") + data.length);
+				$control.find(".flag.right").click(function() {
+					next();
+				});
+				$control.find(".flag.left").click(function() {
+					prev();
+				});
+				var html="";
+				for(var i=data.length;i--;) {
+					html+="<div";
+					if (i+1===data.length) {
+						html += " class=\"active\"";
+					}
+					html+=">&nbsp;</div>";
+				}
+				$control.find(".navidot").html(html);
+				$control.find(".navidot>div").click(function() {
+					var index = $(this).index();
+					move(index);
+				});
+				setTimeout(run,5000);
+			})();
+
+
+
+
+
+
+
+		});
+	</script>
+
+	<div class="homeDiv">
+		<div class="blockDiv1">
+			<div class="box">&nbsp;</div>
+			<div class="control">
+				<div class="flag right">&nbsp;</div>
+				<div class="navinum">
+					<span class="current">01</span>
+					<span class="spline">/</span>
+					<span class="total">&nbsp;</span>
+				</div>
+				<div class="flag left">&nbsp;</div>
+				<div class="navidot">&nbsp;</div>
+			</div>
+		</div>
+		<div class="blockDiv2">
+			
+		</div>
+		<div class="blockDiv3">
+			
+		</div>
+		<div class="blockDiv4">
+			
+		</div>
+	</div>
+
+
+	
+</body>
+</html>
