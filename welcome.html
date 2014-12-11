@@ -7,49 +7,47 @@
 <body>
 
 
+
+
+
 	<style>
 		html,body {
 			height:100%;
 			width:100%;
 		}
-
 		body {
 			margin:0;
 		}
-		
-
 		.welcomeDiv {
 			height:100%;
 			width:100%;
 			margin: 0 auto;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 211;			
 		}
-
 		.welcomeDiv>.sloganDiv {
 			position: relative;
 		}
-
 		.welcomeDiv>.sloganDiv>.sloganImg {
 			position: absolute;
 			right: 0;
 		}
-
 		.welcomeDiv>.logoDiv {
 			position: absolute;
 			left: 50%;
 			top: 50%;
 		}
-
 		.welcomeDiv>.brandDiv {
 			position: absolute;
 			top:75%;
 			width:100%;
 		}
-	
 		.welcomeDiv>.brandDiv>div {
 			display: inline-block;
 			text-align: center;
 		}
-
 		.welcomeDiv>.scrollDownDiv {
 			background-image: url(http://www.ingapphoto.com.tw/INGAP/Open%20page/ScrollDown.png);
 			width: 105px;
@@ -61,10 +59,7 @@
 			margin-top: -25px;
 			cursor: pointer;
 		}
-		
 	</style>
-
-
 	<script>
 		$(function() {
 			var welcomeBg="http://www.ingapphoto.com.tw/INGAP/Open page/Background.png",
@@ -132,13 +127,9 @@
 						url:"#15"
 					}
 				];
-
 			function url(url) {
 				return "url(" + encodeURI(url) + ")";
 			}
-
-			
-
 			(function() {
 				$(".welcomeDiv").css("background-image",url(welcomeBg));
 				$(".sloganImg").attr("src",sloganImg);
@@ -162,11 +153,16 @@
 						$(".brandDiv").css("margin-top",-$(".brandDiv").height()/2);
 					}
 				});
-			})(); //initializing
+				$("body").css("overflow","hidden");
+				function hideWelcomeDiv() {
+					$("body").css("overflow","auto");
+					$(".welcomeDiv").hide();
+				}
+				$(".scrollDownDiv").click(hideWelcomeDiv);
+				setTimeout(hideWelcomeDiv,5000);
+			})(); //init
 		});
 	</script>
-
-
 	<div class="welcomeDiv">
 		<div class="sloganDiv">
 			<img class="sloganImg">
