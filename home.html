@@ -123,6 +123,59 @@
 		}
 
 
+
+
+		.homeDiv>.blockDiv4 {
+			padding-top: 105px;
+		}
+		.homeDiv>.blockDiv4>.row>div {
+			width:260px;
+			height:367px;
+			margin-right:53px;
+			float: left;
+		}
+		.homeDiv>.blockDiv4>.row>div.end {
+			margin-right: 0px;
+		}
+		.homeDiv>.blockDiv4>.row>div>.itemnum {
+			position: absolute;
+			z-index: 1;
+		}
+		.homeDiv>.blockDiv4>.row>div>a {
+			background-color: white;
+			width:260px;
+			height: 260px;
+			display: block;
+		}
+		.homeDiv>.blockDiv4>.row>div>a>img:hover {
+			opacity: 0.5;
+		}
+		.homeDiv>.blockDiv4>.row>div>.brand,.homeDiv>.blockDiv4>.row>div>.text {
+			text-align: center;
+			font-size: 14px;
+			font-family: arial;
+			color: #393a3a;
+			margin-top: 5px;
+		}
+		.homeDiv>.blockDiv4>.row>div>.price {
+			text-align: center;
+			margin-top: 10px;
+		}	
+		.homeDiv>.blockDiv4>.row>div>.price>span {
+			font-size: 16px;
+			font-family: arial;
+			font-weight: bold;
+			color: #393a3a;
+		}
+		.homeDiv>.blockDiv4>.row>div>.price>.origin {
+			margin-right: 10px;
+			text-decoration: line-through;
+			color: gray;
+		}
+
+
+
+
 	</style>
 	<script>
 		$(function() {
@@ -410,6 +463,135 @@
 			run();
 		});
 
+		$(function() {
+			var data = [
+				{
+					img:"http://sprzny.uniqlo.com/assets/dynamic/images/t-shirts/fec3b508036f3f7da0207ae67604e07ae68172ff_260x-.jpg",
+					url:"#1",
+					brand:"A.D.M.J",
+					text:"牛革色塊拼接COOKIE BAG-BLUE",
+					price: 19500,
+					originPrice: 19500
+				},
+				{
+					img:"http://sprzny.uniqlo.com/assets/dynamic/images/t-shirts/fec3b508036f3f7da0207ae67604e07ae68172ff_260x-.jpg",
+					url:"#1",
+					brand:"A.D.M.J",
+					text:"牛革色塊拼接COOKIE BAG-BLUE",
+					price: 19500,
+					originPrice: null
+				},
+				{
+					img:"http://sprzny.uniqlo.com/assets/dynamic/images/t-shirts/fec3b508036f3f7da0207ae67604e07ae68172ff_260x-.jpg",
+					url:"#1",
+					brand:"A.D.M.J",
+					text:"牛革色塊拼接COOKIE BAG-BLUE",
+					price: 19500,
+					originPrice: 19500
+				},
+				{
+					img:"http://sprzny.uniqlo.com/assets/dynamic/images/t-shirts/fec3b508036f3f7da0207ae67604e07ae68172ff_260x-.jpg",
+					url:"#1",
+					brand:"A.D.M.J",
+					text:"牛革色塊拼接COOKIE BAG-BLUE",
+					price: 19500,
+					originPrice: 19500
+				},
+				{
+					img:"http://sprzny.uniqlo.com/assets/dynamic/images/t-shirts/fec3b508036f3f7da0207ae67604e07ae68172ff_260x-.jpg",
+					url:"#1",
+					brand:"A.D.M.J",
+					text:"牛革色塊拼接COOKIE BAG-BLUE",
+					price: 19500,
+					originPrice: 19500
+				},
+				{
+					img:"http://sprzny.uniqlo.com/assets/dynamic/images/t-shirts/fec3b508036f3f7da0207ae67604e07ae68172ff_260x-.jpg",
+					url:"#1",
+					brand:"A.D.M.J",
+					text:"牛革色塊拼接COOKIE BAG-BLUE",
+					price: 19500,
+					originPrice: 19500
+				},
+				{
+					img:"http://sprzny.uniqlo.com/assets/dynamic/images/t-shirts/fec3b508036f3f7da0207ae67604e07ae68172ff_260x-.jpg",
+					url:"#1",
+					brand:"A.D.M.J",
+					text:"牛革色塊拼接COOKIE BAG-BLUE",
+					price: 19500,
+					originPrice: 19500
+				},
+				{
+					img:"http://sprzny.uniqlo.com/assets/dynamic/images/t-shirts/fec3b508036f3f7da0207ae67604e07ae68172ff_260x-.jpg",
+					url:"#1",
+					brand:"A.D.M.J",
+					text:"牛革色塊拼接COOKIE BAG-BLUE",
+					price: 19500,
+					originPrice: 19500
+				},
+				{
+					img:"http://sprzny.uniqlo.com/assets/dynamic/images/t-shirts/fec3b508036f3f7da0207ae67604e07ae68172ff_260x-.jpg",
+					url:"#1",
+					brand:"A.D.M.J",
+					text:"牛革色塊拼接COOKIE BAG-BLUE",
+					price: 19500,
+					originPrice: 19500
+				},
+				{
+					img:"http://sprzny.uniqlo.com/assets/dynamic/images/t-shirts/fec3b508036f3f7da0207ae67604e07ae68172ff_260x-.jpg",
+					url:"#1",
+					brand:"A.D.M.J",
+					text:"牛革色塊拼接COOKIE BAG-BLUE",
+					price: 19500,
+					originPrice: 19500
+				},
+				{
+					img:"http://sprzny.uniqlo.com/assets/dynamic/images/t-shirts/fec3b508036f3f7da0207ae67604e07ae68172ff_260x-.jpg",
+					url:"#1",
+					brand:"A.D.M.J",
+					text:"牛革色塊拼接COOKIE BAG-BLUE",
+					price: 19500,
+					originPrice: 19500
+				},
+				{
+					img:"http://sprzny.uniqlo.com/assets/dynamic/images/t-shirts/fec3b508036f3f7da0207ae67604e07ae68172ff_260x-.jpg",
+					url:"#1",
+					brand:"A.D.M.J",
+					text:"牛革色塊拼接COOKIE BAG-BLUE",
+					price: 19500,
+					originPrice: 19500
+				}
+			];
+			function formatNumber(str) {
+				if(str.length <= 3){
+					return str;
+				} else {
+					return formatNumber(str.substr(0,str.length-3))+','+str.substr(str.length-3);
+				}
+			}
+			var html="";
+			for (var i=0,max=data.length;i<max;i++) {
+				html += "<div";
+				if ((i+1)%4===0) {
+					html += " class=\"end\"";
+				}
+				html += ">";
+				html += "<img class=\"itemnum\" src=\"http://www.ingapphoto.com.tw/INGAP/Home/RANKINGS/Label/R" + (i+1) + ".png\">";
+				html += "<a href=\"" + data[i].url + "\"><img src=\"" + data[i].img + "\"></a>";
+				html += "<div class=\"brand\">" + data[i].brand + "</div>";
+				html += "<div class=\"text\">" + data[i].text + "</div>";
+				html += "<div class=\"price\">";
+				if (data[i].originPrice && data[i].originPrice>0) {
+					html += "<span class=\"origin\">NT:$" + formatNumber(data[i].originPrice.toString()) + "</span>";	
+				}
+				html += "<span>NT:$" + formatNumber(data[i].price.toString()) + "</span>";
+				html += "</div>";
+				html += "</div>";
+			}
+			$(".blockDiv4>.row").html(html);
+
+		});
+
 	</script>
 
 	<div class="homeDiv">
@@ -454,7 +636,8 @@
 			</div>
 		</div>
 		<div class="blockDiv4">
-			
+			<img class="titleImg" src="http://www.ingapphoto.com.tw/INGAP/Home/RANKINGS/4T.png">
+			<div class="row">&nbsp;</div>
 		</div>
 	</div>
 
