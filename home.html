@@ -175,7 +175,56 @@
 
 
 
-
+		.homeDiv>.naviDiv {
+			position: fixed;
+			left: 15px;
+			top: 302px;
+			height: 119px;
+			z-index: 1;
+		}
+		.homeDiv>.naviDiv>div>div{
+			width:20px;
+			height:20px;
+			cursor: pointer;
+			margin-bottom: 13px;
+			float: left;
+		}
+		.homeDiv>.naviDiv>div>.text{
+			width: auto;
+			cursor: default;
+			font-size: 12px;
+			font-family: arial;
+			margin-left: 10px;
+			line-height: 22px;
+		    visibility: hidden;
+		}
+		.homeDiv>.naviDiv>div>.navi1{
+			background-image: url(http://www.ingapphoto.com.tw/INGAP/Home/Floor/1a.png);
+		}
+		.homeDiv>.naviDiv>div>.navi1.selected{
+			background-image: url(http://www.ingapphoto.com.tw/INGAP/Home/Floor/1b.png);
+		}
+		.homeDiv>.naviDiv>div>.navi2{
+			background-image: url(http://www.ingapphoto.com.tw/INGAP/Home/Floor/2a.png);
+		}
+		.homeDiv>.naviDiv>div>.navi2.selected{
+			background-image: url(http://www.ingapphoto.com.tw/INGAP/Home/Floor/2b.png);
+		}
+		.homeDiv>.naviDiv>div>.navi3{
+			background-image: url(http://www.ingapphoto.com.tw/INGAP/Home/Floor/3a.png);
+		}
+		.homeDiv>.naviDiv>div>.navi3.selected{
+			background-image: url(http://www.ingapphoto.com.tw/INGAP/Home/Floor/3b.png);
+		}
+		.homeDiv>.naviDiv>div>.navi4{
+			background-image: url(http://www.ingapphoto.com.tw/INGAP/Home/Floor/4a.png);
+		}
+		.homeDiv>.naviDiv>div>.navi4.selected{
+			background-image: url(http://www.ingapphoto.com.tw/INGAP/Home/Floor/4b.png);
+		}
+		.homeDiv>.naviDiv>div>.end {
+			margin-bottom:0;
+		}
 	</style>
 	<script>
 		$(function() {
@@ -330,12 +379,12 @@
 				},
 				item05:{
 					img1:"http://iphoto.ipeen.com.tw/photo/comment/def/200x200/1/5/8/321851/321851_1345156806_9069.jpg",
-					img2:"http://blog.youthwant.com.tw/imgpool/142/72142_20140729033116.jpg",
+					img2:"http://img1.momoshop.com.tw/goodsimg/0002/840/780/2840780_Y.jpg?t=1408990888",
 					url:"#5"
 				},
 				item06:{
 					img1:"http://hk.mkpc.net/z/8901/53f9f351c04bdb60abb363e48fc03587/a44e570c8646bbc20bcbcc1f861ade52s.jpg",
-					img2:"http://blog.youthwant.com.tw/imgpool/491/72491_20140731125345.jpg",
+					img2:"http://i.ebayimg.com/00/s/NTQwWDU0MA==/z/SfAAAOSw-jhUBta8/$_2.JPG",
 					url:"#6"
 				},
 				item07:{
@@ -589,12 +638,62 @@
 				html += "</div>";
 			}
 			$(".blockDiv4>.row").html(html);
-
 		});
 
+		$(function() {
+			$(window).scroll(function() {
+				function show(index) {
+					$(".naviDiv>div>.navi" + index).addClass("selected");
+					$(".naviDiv>div>.navi" + index).next().css("visibility","visible");
+				}
+				var scrollTop = $(window).scrollTop();
+				$(".naviDiv>div>.navi").removeClass("selected");
+				$(".naviDiv>div>.text").css("visibility","hidden");				
+				if (scrollTop>=$(".blockDiv4").offset().top) {
+					show(4);
+				} else if (scrollTop>=$(".blockDiv3").offset().top) {
+					show(3);
+				} else if (scrollTop>=$(".blockDiv2").offset().top) {
+					show(2);
+				} else {
+					show(1);
+				}
+			});
+			$(window).load(function() {
+				$(window).scroll();
+			});
+			$(".naviDiv>div>.navi").mouseenter(function() {
+				$(this).addClass("selected");
+				$(this).next().css("visibility","visible");
+			}).mouseleave(function() {
+				$(window).scroll();
+			}).click(function() {
+				var index = $(".naviDiv>div>.navi").index(this)+1;
+				var scrollTop = $(".blockDiv" + index).offset().top;
+				$("html, body").animate({ scrollTop: scrollTop}, 1000);
+			});
+		});
 	</script>
 
 	<div class="homeDiv">
+		<div class="naviDiv">
+			<div>
+				<div class="navi navi1">&nbsp;</div>
+				<div class="text">text1</div>
+			</div>
+			<div>
+				<div class="navi navi2">&nbsp;</div>
+				<div class="text">text2</div>
+			</div>
+			<div>
+				<div class="navi navi3">&nbsp;</div>
+				<div class="text">text3</div>
+			</div>
+			<div>
+				<div class="navi navi4 end">&nbsp;</div>
+				<div class="text">text4</div>
+			</div>
+		</div>
 		<div class="blockDiv1">
 			<div class="box">&nbsp;</div>
 			<div class="control">
