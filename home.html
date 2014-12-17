@@ -114,6 +114,9 @@
 				}
 				$(".scrollDownDiv").click(hideWelcomeDiv);
 				setTimeout(hideWelcomeDiv,5000);
+				if ($(window).scrollTop()!==0) {
+					hideWelcomeDiv();
+				}
 			})(); //init
 		}
 	</script>
