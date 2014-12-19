@@ -39,10 +39,10 @@
   .blogDiv>.right {
     width: 807px;
   }
-  .blogDiv>.right>.box {
+  #article>.box {
     margin-left:60px;
   }
-  .blogDiv>.right>.box>.title {
+  #article>.box>.title {
     width: 647px;
     height: 40px;
     background-color: #d8d5ce;
@@ -53,78 +53,107 @@
     font-size: 16px;
     font-family: arial;
   }
-  .blogDiv>.right>.box>.title>.date {
+  #article>.box>.title>.date {
     float:right;
     color: gray;
     font-size: 2px;
     margin-top: 5px;
   }
-  .blogDiv>.right>.box>.content {
+  #article>.box>.content {
     padding:10px;
     width:647px;
+  }
+  .blogNavi {
+    width: 647px;
+    text-align: right;
+    padding: 0 10px;
+    margin-left: 60px;
+  }
+  .mr10 {
+    margin-right: 10px;
   }
 </style> <script src="../shop/customuc/c51ingap201412/js/navlink.js"></script> <script>
   $(function() {
     Nav.whatsnew(25,"A.D.M.J");
+    var params = QueryString("type") !== "" ? "&type=" + QueryString("type") : "";
+    params += QueryString("key") !== "" ? "&key=" + QueryString("key") : "";
+    params += QueryString("p") !== "" ? "&p=" + QueryString("p") : "";
+    if (params==="") {
+      params="?type=default";
+    } else {
+      params="?"+params.substr(1);
+    }
+    $.getJSON("../shop/customuc/c51ingap201412/data/" + params,function(data){
+      function monthName(month) {
+        var names=["January","February","March","April","May","June","July","August","September","October","November","December"];
+        return names[parseInt(month,10)-1];
+      }
+      (function() {
+        var html="";
+        for (var i=0,max=data.category.length;i<max;i++) {
+          html+="<li><a href=\"" + location.pathname + "?no=1&type=category&key=" + data.category[i] + "\">" + data.category[i] + "</a></li>";
+        }
+        $("#category").html(html);
+      })(); //category
+      (function() {
+        var html="";
+        for (var i=0,max=data.archive.length;i<max;i++) {
+          html+="<li><a href=\"" + location.pathname + "?no=1&type=archive&key=" + data.archive[i] + "\">" + monthName(data.archive[i].substring(4)) + " " + data.archive[i].substring(0,4) + "</a></li>";
+        }
+        $("#archive").html(html);
+      })(); //archive
+      (function() {
+        var html="";
+        for (var i=0,max=data.article.length;i<max;i++) {
+          html+="<div class=\"box\">";
+          html+="<div class=\"title\"><span>" + data.article[i].title + "</span><span class=\"date\">" + data.article[i].date + "</span></div>";
+          html+="<div class=\"content\">" + data.article[i].content + "</div>";
+          html+="</div>";
+        }
+        $("#article").html(html);
+      })(); //article
+
+      (function() {
+        var params = QueryString("type") !== "" ? "&type=" + QueryString("type") : "";
+        params += QueryString("key") !== "" ? "&key=" + QueryString("key") : "";
+        if (params==="") {
+          params="&type=default";
+        }
+        var p = QueryString("p");
+        if (p === "") {
+          p=1;
+        }
+        p=parseInt(p,10);
+        var html="";
+        if (data.hasPrev) {
+          html+="<a href=\"" + location.pathname + "?no=1" + params + "&p=" + (p-1) + "\"";
+          if (data.hasNext) {
+            html+=" class=\"mr10\"";
+          }
+          html+="><img src=\"http://www.admj.co.jp/images/contents/whatsnew/page-nav_new.jpg\"></a>";
+        }
+        if (data.hasNext) {
+          html+="<a href=\"" + location.pathname + "?no=1" + params + "&p=" + (p+1) + "\"><img src=\"http://www.admj.co.jp/images/contents/whatsnew/page-nav_older.jpg\"/></a>";
+        }
+        $(".blogNavi").html(html);
+      })(); //navi
+
+    });
   });
 </script>
 <div class="blogDiv">
 <div class="left"><img class="logo" src="http://www.ingapphoto.com.tw/INGAP/Product List/LOGO/A.D.M.J.png" alt="" />
-<div class="title">CATEGOTY</div>
+<div class="title">CATEGORY</div>
 <div class="list">
-<ul>
-    <li><a href="#1">News</a></li>
-    <li><a href="#2">Event</a></li>
-    <li><a href="#3">NewArrival</a></li>
-</ul>
-</div>
-<div class="title">ARCHIVE</div>
-<div class="list">
-<ul>
-    <li><a href="#1">May 2014</a></li>
-    <li><a href="#2">April 2014</a></li>
-    <li><a href="#3">March 2014</a></li>
-    <li><a href="#4">February 2014</a></li>
-    <li><a href="#5">January 2014</a></li>
-    <li><a href="#6">December 2013</a></li>
-    <li><a href="#7">November 2013</a></li>
-    <li><a href="#8">October 2013</a></li>
-    <li><a href="#9">September 2013</a></li>
-    <li><a href="#9">August 2013</a></li>
-    <li><a href="#9">July 2013</a></li>
-    <li><a href="#9">June 2013</a></li>
-    <li><a href="#1">May 2013</a></li>
-    <li><a href="#2">April 2013</a></li>
-    <li><a href="#3">March 2013</a></li>
-    <li><a href="#4">February 2013</a></li>
-    <li><a href="#5">January 2013</a></li>
-    <li><a href="#6">December 2012</a></li>
-    <li><a href="#7">November 2012</a></li>
-    <li><a href="#8">October 2012</a></li>
-    <li><a href="#9">September 2012</a></li>
-    <li><a href="#9">August 2012</a></li>
-    <li><a href="#9">July 2012</a></li>
-    <li><a href="#9">June 2012</a></li>
-    <li><a href="#1">May 2012</a></li>
-    <li><a href="#2">April 2012</a></li>
-    <li><a href="#3">March 2012</a></li>
-    <li><a href="#4">February 2012</a></li>
-    <li><a href="#5">January 2012</a></li>
-</ul>
-</div>
-</div>
-<div class="right"><img src="http://www.admj.co.jp/images/contents/whatsnew/whats_title.jpg" alt="" style="margin-top:36px;margin-left:60px;" />
-<div class="box">
-<div class="title"><span>selected by Kyoko kuko</span><span class="date">21 May 2014</span></div>
-<div class="content">ooxxooxx</div>
-</div>
-<div class="box">
-<div class="title"><span>selected by Kyoko kuko</span><span class="date">21 May 2014</span></div>
-<div class="content">ooxxooxx</div>
-</div>
-<div class="box">
-<div class="title"><span>selected by Kyoko kuko</span><span class="date">21 May 2014</span></div>
-<div class="content">ooxxooxx</div>
-</div>
-</div>
-</div>
+<ul id="category">&nbsp;</ul>
+    </div>
+    <div class="title">ARCHIVE</div>
+    <div class="list">
+    <ul id="archive">&nbsp;</ul>
+        </div>
+        </div>
+        <div class="right"><img src="http://www.admj.co.jp/images/contents/whatsnew/whats_title.jpg" alt="" style="margin-top:36px;margin-left:60px;" />
+        <div id="article">&nbsp;</div>
+        <div class="blogNavi">&nbsp;</div>
+        </div>
+        </div>
