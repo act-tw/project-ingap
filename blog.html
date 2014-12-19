@@ -106,7 +106,10 @@
         var html="";
         for (var i=0,max=data.article.length;i<max;i++) {
           html+="<div class=\"box\">";
-          html+="<div class=\"title\"><span>" + data.article[i].title + "</span><span class=\"date\">" + data.article[i].date + "</span></div>";
+          html+="<div class=\"title\"><span>" + data.article[i].title + "</span><span class=\"date\">";
+          html+=data.article[i].date.substring(8)+" "+monthName(data.article[i].date.substring(5,7))+" ";
+          html+=data.article[i].date.substring(0,4);
+          html+="</span></div>";
           html+="<div class=\"content\">" + data.article[i].content + "</div>";
           html+="</div>";
         }
