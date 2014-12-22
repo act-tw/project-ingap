@@ -1,176 +1,157 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-</head>
-<body>
-
-
-
-
-
-
-	<style>
-		.loginDiv {
-			background-image: url(http://www.ingapphoto.com.tw/INGAP/Member/Member_Background.png);
-			width:972px;
-			height:489px;
-			position: relative;
-			margin:50px auto;
-		}
-		.loginDiv>.close {
-			background-image: url(http://www.ingapphoto.com.tw/INGAP/Member/close.png);
-			width:30px;
-			height: 30px;
-			position: absolute;
-			top: 18px;
-			right: 18px;
-			cursor: pointer;
-		}
-		.loginDiv .text {
-			font-size: 12px;
-			font-family: arial;
-			margin-left: 3px;
-		}
-		.loginDiv .text>a {
-			text-decoration: none;
-			color: #7E7E7E;
-		}
-		.loginDiv .long {
-			margin-top: 64px;
-		}
-		.loginDiv .field>input,.loginDiv .field2>input {
-			width:100%;
-		}
-		.loginDiv .alignRight {
-			text-align: right;
-		}
-		.loginDiv>.left {
-			position: absolute;
-			margin-top:84px;
-			margin-left:86px;
-		}
-		.loginDiv>.left .short {
-			margin-top: 13px;
-		}	
-		.loginDiv>.left .field {
-			position: absolute;
-			left: 82px;
-			width: 165px;
-		}
-		.loginDiv>.center {
-			width: 1px;
-			height: 402px;
-			position: absolute;
-			left: 403px;
-			top: 45px;
-			border-right:2px dotted gray;
-		}
-		.loginDiv>.right {
-			position: absolute;
-			margin-top: 83px;
-			margin-left: 475px;
-		}
-		.loginDiv>.right .short {
-			margin-top: 17px;
-		}
-		.loginDiv>.right .field {
-			position: absolute;
-			left: 75px;
-			width: 111px;
-		}
-		.loginDiv>.right .field2 {
-			position: absolute;
-			left: 75px;
-			width: 322px;
-		}
-	</style>
-	<script>
- 		$(function() {
- 			$(".edtCrId").attr("placeholder","可使用英文、數字，請勿輸入中文！");
- 			$(".edtCrCellphone").attr("placeholder","請勿輸入任何符號！");
- 		});
-	</script>
-	<div class="loginDiv">
-		<div class="close">&nbsp;</div>
-		<div class="left">
-			<img src="http://www.ingapphoto.com.tw/INGAP/Member/sign in.png">
-			<div class="text">請先登入INGAP會員方可開始結帳</div>
-			<div class="long">
-				<span class="text">會員帳號：</span>
-				<span class="field">
-					[edtUserid]
-				</span>
-			</div>
-			<div class="short">
-				<span class="text">會員密碼：</span>
-				<span class="field">
-					[edtPwd]
-				</span>
-			</div>			
-			<div class="short alignRight" style="width:238px;">
-				[chkMember]
-				<span class="text">記住帳號</span>
-				<span class="text">|</span>
-				<span class="text"><a href="../Common/MemberPasswordRecovery.aspx?[st]">忘記密碼</a></span>
-			</div>	
-			<div class="long">
-				[loginImageButton]	
-			</div>
-			<div class="short">
-				[FBloginImageButton]
-			</div>
+<style>
+	.loginDiv {
+		background-image: url(http://www.ingapphoto.com.tw/INGAP/Member/Member_Background.png);
+		width:972px;
+		height:489px;
+		position: relative;
+		margin:50px auto;
+	}
+	.loginDiv>.close {
+		background-image: url(http://www.ingapphoto.com.tw/INGAP/Member/close.png);
+		width:30px;
+		height: 30px;
+		position: absolute;
+		top: 18px;
+		right: 18px;
+		cursor: pointer;
+	}
+	.loginDiv .text {
+		font-size: 12px;
+		font-family: arial;
+		margin-left: 3px;
+	}
+	.loginDiv .text>a {
+		text-decoration: none;
+		color: #7E7E7E;
+	}
+	.loginDiv .long {
+		margin-top: 64px;
+	}
+	.loginDiv .field>input,.loginDiv .field2>input {
+		width:100%;
+	}
+	.loginDiv .alignRight {
+		text-align: right;
+	}
+	.loginDiv>.left {
+		position: absolute;
+		margin-top:84px;
+		margin-left:86px;
+	}
+	.loginDiv>.left .short {
+		margin-top: 13px;
+	}	
+	.loginDiv>.left .field {
+		position: absolute;
+		left: 82px;
+		width: 165px;
+	}
+	.loginDiv>.center {
+		width: 1px;
+		height: 402px;
+		position: absolute;
+		left: 403px;
+		top: 45px;
+		border-right:2px dotted gray;
+	}
+	.loginDiv>.right {
+		position: absolute;
+		margin-top: 83px;
+		margin-left: 475px;
+	}
+	.loginDiv>.right .short {
+		margin-top: 17px;
+	}
+	.loginDiv>.right .field {
+		position: absolute;
+		left: 75px;
+		width: 111px;
+	}
+	.loginDiv>.right .field2 {
+		position: absolute;
+		left: 75px;
+		width: 322px;
+	}
+</style>
+<script>
+	$(function() {
+		$(".edtCrId").attr("placeholder","可使用英文、數字，請勿輸入中文！");
+		$(".edtCrCellphone").attr("placeholder","請勿輸入任何符號！");
+	});
+</script>
+<div class="loginDiv">
+	<div class="close">&nbsp;</div>
+	<div class="left">
+		<img src="http://www.ingapphoto.com.tw/INGAP/Member/sign in.png">
+		<div class="text">請先登入INGAP會員方可開始結帳</div>
+		<div class="long">
+			<span class="text">會員帳號：</span>
+			<span class="field">
+				[edtUserid]
+			</span>
 		</div>
-		<div class="center">&nbsp;</div>
-		<div class="right">
-			<img src="http://www.ingapphoto.com.tw/INGAP/Member/Registration.png">
-			<div class="text" style="margin-top:4px;">如果您是第一次來請先加入會員喔！</div>
-			<div class="text" style="margin-top:9px;">加入會員的好處 ● 一般會員優惠 ● VIP會員折扣優惠</div>
-			<div class="short" style="margin-top:20px;">
-				<span class="text">會員帳號：</span>
-				<span class="field2">
-					[edtCrId]
-				</span>
-			</div>
-			<div class="short">
-				<span class="text">會員密碼：</span>
-				<span class="field">
-					[edtCrPws]
-				</span>
-			</div>
-			<div class="short">
-				<span class="text">確認密碼：</span>
-				<span class="field">
-					[edtCrPws2]
-				</span>
-			</div>	
-			<div class="short">
-				<span class="text">電子郵件：</span>
-				<span class="field2">
-					[edtCrEMail]
-				</span>
-			</div>
-			<div class="short">
-				<span class="text">生　　日：</span>
-				<span class="field">
-					[edtCrBirdhday]
-				</span>
-			</div>
-			<div class="short">
-				<span class="text">手　　機：</span>
-				<span class="field">
-					[edtCrCellphone]
-				</span>
-			</div>	
-			<div class="short">
-				[btnCrImageLogin]
-			</div>								
+		<div class="short">
+			<span class="text">會員密碼：</span>
+			<span class="field">
+				[edtPwd]
+			</span>
+		</div>			
+		<div class="short alignRight" style="width:238px;">
+			[chkMember]
+			<span class="text">記住帳號</span>
+			<span class="text">|</span>
+			<span class="text"><a href="../Common/MemberPasswordRecovery.aspx?[st]">忘記密碼</a></span>
+		</div>	
+		<div class="long">
+			[loginImageButton]	
+		</div>
+		<div class="short">
+			[FBloginImageButton]
 		</div>
 	</div>
-
-
-
-	
-</body>
-</html>
+	<div class="center">&nbsp;</div>
+	<div class="right">
+		<img src="http://www.ingapphoto.com.tw/INGAP/Member/Registration.png">
+		<div class="text" style="margin-top:4px;">如果您是第一次來請先加入會員喔！</div>
+		<div class="text" style="margin-top:9px;">加入會員的好處 ● 一般會員優惠 ● VIP會員折扣優惠</div>
+		<div class="short" style="margin-top:20px;">
+			<span class="text">會員帳號：</span>
+			<span class="field2">
+				[edtCrId]
+			</span>
+		</div>
+		<div class="short">
+			<span class="text">會員密碼：</span>
+			<span class="field">
+				[edtCrPws]
+			</span>
+		</div>
+		<div class="short">
+			<span class="text">確認密碼：</span>
+			<span class="field">
+				[edtCrPws2]
+			</span>
+		</div>	
+		<div class="short">
+			<span class="text">電子郵件：</span>
+			<span class="field2">
+				[edtCrEMail]
+			</span>
+		</div>
+		<div class="short">
+			<span class="text">生　　日：</span>
+			<span class="field">
+				[edtCrBirdhday]
+			</span>
+		</div>
+		<div class="short">
+			<span class="text">手　　機：</span>
+			<span class="field">
+				[edtCrCellphone]
+			</span>
+		</div>	
+		<div class="short">
+			[btnCrImageLogin]
+		</div>								
+	</div>
+</div>

@@ -1,247 +1,205 @@
-	<style>
-		body {
-			margin:0;
+<style>
+	body {
+		margin:0;
+	}
+	.headerDiv {
+		height:220px;
+		background-color:#eeeeec;
+		position: relative;
+	}
+	.headerDiv>.toolbar {
+		overflow: hidden;
+		position: absolute;
+		right: 100px;
+		top: 20px;
+	}
+	.headerDiv>.toolbar>* {
+		float:left;
+	}
+	.headerDiv>.toolbar>form>.search {
+		height: 20px;
+		margin: 0 15px 0 5px;
+		padding: 0 20px;
+		border: 0;
+		background-color: transparent;
+		border-bottom: 1px solid #393a3a;
+		outline: none;
+	}
+	.headerDiv>.toolbar>a {
+		font-size: 15px;
+		font-family: arial;
+		font-weight: bold;
+		color: #393a3a;
+		margin-top: 2px;
+		text-decoration: none;
+	}
+	.headerDiv>.toolbar>span {
+		margin: 0 15px;
+	}
+	.headerDiv>.logo {
+		padding-top: 35px;
+		padding-bottom: 9px;
+	}
+	.headerDiv>.logo>a.biglogo {
+		height: 150px;
+		width: 300px;
+		display: block;
+		margin: 0 auto;
+	}
+	.headerDiv>.logo>a.smalllogo {
+		display: none;
+	}
+	.headerDiv>.menu {
+		position: absolute;
+		bottom: 0;
+		margin: 0 auto;
+		width: 100%;
+		text-align: center;
+		padding: 0;
+		transition: background-color 0.5s;
+	}
+	.headerDiv>.menu>a {
+		text-decoration: none;
+		height: 26px;
+		display: inline-block;
+		line-height: 26px;
+		color: #393a3a;
+		font-size: 14px;
+		padding: 0 10px;
+		font-family: arial;
+		transition: background-color 0.5s,color 0.5s;
+	}
+	.headerDiv>.menu>a:hover {
+		background-color: #393a3a;
+		color:white;
+		transition: background-color 0.5s,color 0.5s;
+	}
+	.headerDiv>.menu>span {
+		height: 26px;
+		display: inline-block;
+		line-height: 28px;
+		font-size: 12px;
+		color: #393a3a;
+	}
+	.headerDiv.dark {
+		height:78px;
+		background-color:rgba(238,238,236,0.8);
+		position:fixed;
+		width: 100%;
+		z-index:10;
+		top:-82px;
+	}
+	.headerDiv.dark>.logo {
+		padding-top: 6px;
+		padding-bottom: 0;
+		margin-left:100px;
+		margin-bottom:9px;
+	}
+	.headerDiv.dark>.logo>a.biglogo {
+		display: none;
+	}
+	.headerDiv.dark>.logo>a.smalllogo {
+		display: block;
+		width: 320px;
+	}
+	.headerDiv.dark>.menu {
+		position:static;
+		background-color: #393a3a;
+		transition: background-color 0.5s;
+	}
+	.headerDiv.dark>.menu>a {
+		color: white;
+		transition: background-color 0.5s,color 0.5s;
+	}
+	.headerDiv.dark>.menu>a:hover {
+		background-color: white;
+		color:#393a3a;
+		transition: background-color 0.5s,color 0.5s;
+	}
+	.headerDiv.dark>.menu>span {
+		color: white;
+		transition: color 0.5s;
+	}
+</style>
+<script>
+	function initShoppingCart() {
+	    $.getJSON("../Common/CartList.ashx",function(data) {
+	        var count = 0;
+	        for (var i = 0, max = data.length; i < max; i++) {
+	            count += data[i].Num;
+	        }
+	        $(".mybagcount").text(count);
+	    });
+	}
+	function initWishList() {
+		$.getJSON("../Common/m/Main/Ajax/CartCmd.ashx?method=GetTraceList&returntype=json",function(data) {
+	        $(".mywishlistcount").text(data.length);
+	    });
+	}
+	$(function() {
+		function initLoginStatus() {
+			$.getJSON("../Common/LoginStatus.ashx",function(data){
+				if (data !== null && data.IsLogin) {
+					$(".loginlogout").attr("href","../common/loginout.aspx");
+					$(".loginlogout>span").attr("text","會員登出").text("LOGOUT");
+				}
+			}); 				
 		}
-
-		.headerDiv {
-			height:220px;
-			background-color:#eeeeec;
-			position: relative;
+		function initMenu() {
+			$.getJSON("../common/ajax/menucmd.ashx",function(data){
+				if (data !== null) {
+					var html="";
+					for(var i=0,max=data.length;i<max;i++) {
+						html += "<a href=\"../Shop/itemlist.aspx?m=" + data[i].Idno + "\">" + data[i].Name + "</a>";
+						if (i < max-1) {
+							html += "<span>|</span>";
+						}
+					}
+					$(".headerDiv>.menu").html(html);
+				}
+			});
 		}
-
-		.headerDiv>.toolbar {
-			overflow: hidden;
-			position: absolute;
-			right: 100px;
-			top: 20px;
-		}
-
-		.headerDiv>.toolbar>* {
-			float:left;
-		}
-
-		.headerDiv>.toolbar>form>.search {
-			height: 20px;
-			margin: 0 15px 0 5px;
-			padding: 0 20px;
-			border: 0;
-			background-color: transparent;
-			border-bottom: 1px solid #393a3a;
-			outline: none;
-		}
-
-		.headerDiv>.toolbar>a {
-			font-size: 15px;
-			font-family: arial;
-			font-weight: bold;
-			color: #393a3a;
-			margin-top: 2px;
-			text-decoration: none;
-		}
-
-		.headerDiv>.toolbar>span {
-			margin: 0 15px;
-		}
-
-		.headerDiv>.logo {
-			padding-top: 35px;
-			padding-bottom: 9px;
-		}
-
-		.headerDiv>.logo>a.biglogo {
-			height: 150px;
-			width: 300px;
-			display: block;
-			margin: 0 auto;
-		}
-
-		.headerDiv>.logo>a.smalllogo {
-
-			display: none;
-		}
-
-		.headerDiv>.menu {
-			position: absolute;
-			bottom: 0;
-			margin: 0 auto;
-			width: 100%;
-			text-align: center;
-			padding: 0;
-			transition: background-color 0.5s;
-		}
-
-		.headerDiv>.menu>a {
-			text-decoration: none;
-			height: 26px;
-			display: inline-block;
-			line-height: 26px;
-			color: #393a3a;
-			font-size: 14px;
-			padding: 0 10px;
-			font-family: arial;
-			transition: background-color 0.5s,color 0.5s;
-		}
-
-		.headerDiv>.menu>a:hover {
-			background-color: #393a3a;
-			color:white;
-			transition: background-color 0.5s,color 0.5s;
-		}
-
-		.headerDiv>.menu>span {
-			height: 26px;
-			display: inline-block;
-			line-height: 28px;
-			font-size: 12px;
-			color: #393a3a;
-		}
-
-		.headerDiv.dark {
-			height:78px;
-			background-color:rgba(238,238,236,0.8);
-			position:fixed;
-			width: 100%;
-			z-index:10;
-			top:-82px;
-		}
-
-		.headerDiv.dark>.logo {
-			padding-top: 6px;
-			padding-bottom: 0;
-			margin-left:100px;
-			margin-bottom:9px;
-		}
-
-		.headerDiv.dark>.logo>a.biglogo {
-			display: none;
-		}
-
-		.headerDiv.dark>.logo>a.smalllogo {
-			display: block;
-			width: 320px;
-		}
-
-		.headerDiv.dark>.menu {
-			position:static;
-			background-color: #393a3a;
-			transition: background-color 0.5s;
-		}
-
-		.headerDiv.dark>.menu>a {
-			color: white;
-			transition: background-color 0.5s,color 0.5s;
-		}
-
-		.headerDiv.dark>.menu>a:hover {
-			background-color: white;
-			color:#393a3a;
-			transition: background-color 0.5s,color 0.5s;
-		}
-
-		.headerDiv.dark>.menu>span {
-			color: white;
-			transition: color 0.5s;
-		}
-
-	</style>
-
-	<script>
-		function initShoppingCart() {
-		    $.getJSON("../Common/CartList.ashx",function(data) {
-		        var count = 0;
-		        for (var i = 0, max = data.length; i < max; i++) {
-		            count += data[i].Num;
-		        }
-		        $(".mybagcount").text(count);
-		    });
-		}
-
-		function initWishList() {
-			$.getJSON("../Common/m/Main/Ajax/CartCmd.ashx?method=GetTraceList&returntype=json",function(data) {
-		        $(".mywishlistcount").text(data.length);
-		    });
-		}
-
- 		$(function() {
-
- 			function initLoginStatus() {
-				$.getJSON("../Common/LoginStatus.ashx",function(data){
- 					if (data !== null && data.IsLogin) {
- 						$(".loginlogout").attr("href","../common/loginout.aspx");
- 						$(".loginlogout>span").attr("text","會員登出").text("LOGOUT");
- 					}
-
- 				}); 				
- 			}
-
- 			function initMenu() {
- 				$.getJSON("../common/ajax/menucmd.ashx",function(data){
- 					if (data !== null) {
- 						var html="";
- 						for(var i=0,max=data.length;i<max;i++) {
- 							html += "<a href=\"../Shop/itemlist.aspx?m=" + data[i].Idno + "\">" + data[i].Name + "</a>";
- 							if (i < max-1) {
- 								html += "<span>|</span>";
- 							}
- 						}
- 						$(".headerDiv>.menu").html(html);
- 					}
- 				});
- 			}
-
- 			$("#logoBar").on("mouseenter mouseleave","span[text]",function(e) {
-				var text = $(this).text();
-				$(this).text($(this).attr("text"));
-				$(this).attr("text",text);
- 			});
-
-
- 			$("#logoBar").append("<div class=\"headerDiv dark\">" + $(".headerDiv").html() +"</div>");
-
-
- 			$(window).scroll(function() {
-				if ($(window).scrollTop()>142 ) {
- 					if (parseInt($(".headerDiv.dark").css("top"))===-82) {
- 						$(".headerDiv.dark").stop(true,false).animate({"top":0},200);
- 					}
- 				} 
- 				if ($(window).scrollTop()<=142 ) {
- 					if (parseInt($(".headerDiv.dark").css("top"))===0) {
- 						$(".headerDiv.dark").stop(true,false).animate({"top":-82},200);
-
- 					}
- 				} 				
- 			});
-
- 			
- 			(function() {
- 				initLoginStatus();
- 				initShoppingCart();
- 				initWishList();
- 				initMenu();
- 			})();//init
- 		});
-	</script>
-
-
-
-
-
-	<div class="headerDiv">
-		<div class="toolbar">
-			<img src="http://www.ingapphoto.com.tw/INGAP/Top/Search.png">
-			<form name="formSc" action="../shop/itemlist.aspx" method="get">
-				<input class="search" type="text" placeholder="SEARCH" name="ctl00$edtSearch">
-			</form>
-			<a href="../Common/login.aspx" class="loginlogout"><span text="會員登入">LOGIN</span></a>
-			<span>|</span>
-			<a href="../Shop/cartList.aspx"><span text="購物車">BASKET</span>(<span class="mybagcount">0</span>)</a>
-			<span>|</span>
-			<a href="../Shop/itemFav.aspx"><span text="購買清單">WISHLIST</span>(<span class="mywishlistcount">0</span>)</a>
-		</div>
-		<div class="logo">
-			<a class="biglogo" href="../Shop"><img src="http://www.ingapphoto.com.tw/INGAP/Top/INGAPlogo_b.png"></a>
-			<a class="smalllogo" href="../Shop"><img src="http://www.ingapphoto.com.tw/INGAP/Top/INGAPlogo_s.png"></a>
-		</div>
-		<div class="menu">&nbsp;</div>
+		$("#logoBar").on("mouseenter mouseleave","span[text]",function(e) {
+			var text = $(this).text();
+			$(this).text($(this).attr("text"));
+			$(this).attr("text",text);
+		});
+		$("#logoBar").append("<div class=\"headerDiv dark\">" + $(".headerDiv").html() +"</div>");
+		$(window).scroll(function() {
+			if ($(window).scrollTop()>142 ) {
+				if (parseInt($(".headerDiv.dark").css("top"))===-82) {
+					$(".headerDiv.dark").stop(true,false).animate({"top":0},200);
+				}
+			} 
+			if ($(window).scrollTop()<=142 ) {
+				if (parseInt($(".headerDiv.dark").css("top"))===0) {
+					$(".headerDiv.dark").stop(true,false).animate({"top":-82},200);
+				}
+			} 				
+		});
+		(function() {
+			initLoginStatus();
+			initShoppingCart();
+			initWishList();
+			initMenu();
+		})();//init
+	});
+</script>
+<div class="headerDiv">
+	<div class="toolbar">
+		<img src="http://www.ingapphoto.com.tw/INGAP/Top/Search.png">
+		<form name="formSc" action="../shop/itemlist.aspx" method="get">
+			<input class="search" type="text" placeholder="SEARCH" name="ctl00$edtSearch">
+		</form>
+		<a href="../Common/login.aspx" class="loginlogout"><span text="會員登入">LOGIN</span></a>
+		<span>|</span>
+		<a href="../Shop/cartList.aspx"><span text="購物車">BASKET</span>(<span class="mybagcount">0</span>)</a>
+		<span>|</span>
+		<a href="../Shop/itemFav.aspx"><span text="購買清單">WISHLIST</span>(<span class="mywishlistcount">0</span>)</a>
 	</div>
+	<div class="logo">
+		<a class="biglogo" href="../Shop"><img src="http://www.ingapphoto.com.tw/INGAP/Top/INGAPlogo_b.png"></a>
+		<a class="smalllogo" href="../Shop"><img src="http://www.ingapphoto.com.tw/INGAP/Top/INGAPlogo_s.png"></a>
+	</div>
+	<div class="menu">&nbsp;</div>
+</div>
