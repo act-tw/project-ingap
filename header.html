@@ -120,6 +120,19 @@
 		color: white;
 		transition: color 0.5s;
 	}
+	.loginIframe {
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		left: 0;
+		top: 0;
+		background-color: rgba(0,0,0,0.5);
+		z-index: 1000;
+	}
+	.loginIframe>iframe {
+		margin: 0 auto;
+		display: block;
+	}
 </style>
 <script>
 	function initShoppingCart() {
@@ -159,6 +172,31 @@
 				}
 			});
 		}
+		function initLoginIframe() {
+			$(".loginlogout").click(function(e){
+				if ($(this).find(">span").attr("text")==="LOGIN" && $(".loginIframe").length<1) {
+					var html="";
+					html += "<div class=\"loginIframe\">";
+					html += "<iframe ";
+					html += "frameborder=\"0\" ";
+					html += "scrolling=\"no\" ";
+					html += "width=\"972\" ";
+					html += "height=\"489\" ";
+					html += "src=\"../common/login.aspx\" ";
+					html += "></div>";
+					$("body").append(html);
+					$(window).resize();
+					e.preventDefault();
+				}
+			});			
+		}
+		$(window).resize(function() {
+			if ($(window).height()>489) {
+				$(".loginIframe>iframe").css("margin-top",($(window).height()-489)/2);
+			} else {
+				$(".loginIframe>iframe").css("margin-top",0);
+			}
+		});
 		$("#logoBar").on("mouseenter mouseleave","span[text]",function(e) {
 			var text = $(this).text();
 			$(this).text($(this).attr("text"));
@@ -182,6 +220,7 @@
 			initShoppingCart();
 			initWishList();
 			initMenu();
+			initLoginIframe();
 		})();//init
 	});
 </script>
