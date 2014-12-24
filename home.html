@@ -82,10 +82,10 @@
 		(function() {
 			var html="";
 			var count=0;
-			brandList.map(function(a){
-				html+="<div><a href=\"" + a.url + "\"><img src=\"" + a.img + "\"></a></div>";
+			for(var i=0,max=brandList.length;i<max;i++) {
+				html+="<div><a href=\"" + brandList[i].url + "\"><img src=\"" + brandList[i].img + "\"></a></div>";
 				count++;
-			});
+			}
 			$(".brandDiv").html(html);
 			$(".brandDiv>div").css("width",100/count+"%");
 			$(".brandDiv>div>a>img").load(function() {
@@ -278,6 +278,9 @@
 		top: 302px;
 		height: 119px;
 		z-index: 1;
+	}
+	.homeDiv>.naviDiv>div {
+		overflow: hidden;
 	}
 	.homeDiv>.naviDiv>div>div{
 		width:20px;
@@ -565,9 +568,11 @@
 				show(1);
 			}
 		});
-		$(window).load(function() {
-			$(window).scroll();
-		});
+		for (var i=0;i<5;i++) {
+			setTimeout(function() {
+				$(window).scroll();
+			},250*i);	
+		}
 		$(".naviDiv>div>.navi").mouseenter(function() {
 			$(this).addClass("selected");
 			$(this).next().css("visibility","visible");
