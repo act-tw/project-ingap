@@ -488,15 +488,17 @@
 		}
 		function move(direction) {
 			if (direction<0) {
-				$(".inbox").css("margin-left","-=20");
-				if (parseInt($(".inbox").css("margin-left"),10)<-data.length*300) {
-					$(".inbox").css("margin-left",0);
-				}
+				$(".inbox").stop(true,true).animate({"margin-left":"-=20"},50,function() {
+					if (parseInt($(".inbox").css("margin-left"),10)<-data.length*300) {
+						$(".inbox").css("margin-left",0);
+					}
+				});
 			} else {
-				$(".inbox").css("margin-left","+=20");
-				if (parseInt($(".inbox").css("margin-left"),10)>=0) {
-					$(".inbox").css("margin-left",-data.length*300);
-				}
+				$(".inbox").stop(true,true).animate({"margin-left":"+=20"},50,function() {
+					if (parseInt($(".inbox").css("margin-left"),10)>=0) {
+						$(".inbox").css("margin-left",-data.length*300);
+					}
+				});
 			}
 		}
 		var times=5000*data.length,
