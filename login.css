@@ -1,0 +1,73 @@
+.loginDiv {
+	background-image: url(http://www.ingapphoto.com.tw/INGAP/Member/Member_Background.png);
+	width:972px;
+	height:489px;
+	position: relative;
+	margin:50px auto;
+}
+.loginDiv>.close {
+	background-image: url(http://www.ingapphoto.com.tw/INGAP/Member/close.png);
+	width:30px;
+	height: 30px;
+	position: absolute;
+	top: 18px;
+	right: 18px;
+	cursor: pointer;
+}
+.loginDiv .text {
+	font-size: 12px;
+	font-family: arial;
+	margin-left: 3px;
+}
+.loginDiv .text>a {
+	text-decoration: none;
+	color: #7E7E7E;
+}
+.loginDiv .long {
+	margin-top: 64px;
+}
+.loginDiv .field>input,.loginDiv .field2>input {
+	width:100%;
+}
+.loginDiv .alignRight {
+	text-align: right;
+}
+.loginDiv>.left {
+	position: absolute;
+	margin-top:84px;
+	margin-left:86px;
+}
+.loginDiv>.left .short {
+	margin-top: 13px;
+}	
+.loginDiv>.left .field {
+	position: absolute;
+	left: 82px;
+	width: 165px;
+}
+.loginDiv>.center {
+	width: 1px;
+	height: 402px;
+	position: absolute;
+	left: 403px;
+	top: 45px;
+	border-right:2px dotted gray;
+}
+.loginDiv>.right {
+	position: absolute;
+	margin-top: 83px;
+	margin-left: 475px;
+}
+.loginDiv>.right .short {
+	margin-top: 17px;
+}
+.loginDiv>.right .field {
+	position: absolute;
+	left: 75px;
+	width: 111px;
+}
+.loginDiv>.right .field2 {
+	position: absolute;
+	left: 75px;
+	width: 322px;
+}
