@@ -1,17 +1,36 @@
-function initShoppingCart() {
-    $.getJSON("../Common/CartList.ashx",function(data) {
+function initShoppingCart(init) {
+    $.getJSON("../Common/CartList.ashx", function(data) {
         var count = 0;
+        var price = 0;
+        var html = "";
         for (var i = 0, max = data.length; i < max; i++) {
             count += data[i].Num;
+            price += data[i].Num * data[i].Price;
+            html += "<tr><td align=\"left\" class=\"cartleft\">";
+            html += "<img class=\"itemImg\" src=\"" + data[i].PhotoSmPath + "\"></td>";
+            html += "<td align=\"left\" class=\"cartright\">";
+            html += "<div class=\"itemMerName\">" + data[i].MerName + "</div>";
+            html += "<div class=\"itemColor\">" + data[i].Color + "</div>";
+            html += "<div class=\"itemMerNo\">" + data[i].MerNo1 + "</div>";
+            html += "<div class=\"itemSize\">" + data[i].Size + "</div>";
+            html += "<div class=\"itemPrice\">特惠價: " + data[i].Price + "元</div>";
+            html += "</td></tr>";
         }
         $(".mybagcount").text(count);
+        $(".mybagcountprice").text(price);
+        $(".cartcontent").html(html === "" ? "<tr><td colspan=\"2\" align=\"center\">Bag is empty.</td></tr>" : html);
+        if (init !== true) {
+            $(".cartlist").slideDown().delay(2000).slideUp();
+        }
     });
 }
+
 function initWishList() {
-	$.getJSON("../Common/m/Main/Ajax/CartCmd.ashx?method=GetTraceList&returntype=json",function(data) {
+    $.getJSON("../Common/m/Main/Ajax/CartCmd.ashx?method=GetTraceList&returntype=json", function(data) {
         $(".mywishlistcount").text(data.length);
     });
 }
+
 $(function() {
 	function initLoginStatus() {
 		$.getJSON("../Common/LoginStatus.ashx",function(data){
@@ -53,7 +72,50 @@ $(function() {
 			}
 		});			
 	}
-	$(window).resize(function() {
+	function initMenuWidth() {
+	    $("span[text]").each(function (i) {
+	        var $this = $(this),
+	            $a = $this.parent(),
+	            width = $a.width();
+	        $this.mouseover();
+	        if ($a.width() > width) {
+	            width = $a.width();
+	        }
+	        $this.mouseleave();
+	        $a.width(width);
+	    });
+	}
+	function initCartList() {
+	    var $cartlist = $(".headerDiv>.toolbar>.cartlist");
+	    if ($cartlist.length < 1) {
+	        var html = "";
+	        html += "<div class=\"cartlist\">";
+	        html += "<div class=\"cartheader\">";
+	        html += "<span class=\"captionleft\">MY BAG</span>";
+	        html += "<span class=\"captionfight\">ITEMS(<span class=\"mybagcount\">0</span>)</span>";
+	        html += "</div>";
+	        html += "<div class=\"shoppingCartItem\">";
+	        html += "<table class=\"cartcontent\"></table>";
+	        html += "</div>";
+	        html += "<div class=\"cartfooter\">TOTAL: $<span class=\"mybagcountprice\">0</span>";
+	        html += "<a href=\"../Shop/cartList.aspx\" class=\"btncheckout\">CHECKOUT(<span class=\"mybagcount\">0</span>)</a>";
+	        html += "</div>";
+	        html += "</div>";
+	        $(".headerDiv>.toolbar").append(html);
+	    }
+	    var eventHander = {
+	        mouseenter: function () {
+	            $(this).parent().find(".cartlist").show();
+	        },
+	        mouseleave: function () {
+	            $(this).parent().find(".cartlist").hide();
+	        }
+	    };
+	    $("a[href='../Shop/cartList.aspx']").on(eventHander);
+	    $(".headerDiv>.toolbar").on("mouseenter", ".cartlist", eventHander.mouseenter);
+	    $(".headerDiv>.toolbar").on("mouseleave", ".cartlist", eventHander.mouseleave);
+    }
+    $(window).resize(function() {
 		if ($(window).height()>489) {
 			$(".loginIframe>iframe").css("margin-top",($(window).height()-489)/2);
 		} else {
@@ -65,7 +127,7 @@ $(function() {
 		$(this).text($(this).attr("text"));
 		$(this).attr("text",text);
 	});
-	$("#logoBar").append("<div class=\"headerDiv dark\">" + $(".headerDiv").html() +"</div>");
+	$("#logoBar").append("<div class=\"headerDiv dark\">" + $(".headerDiv").html() + "</div>");
 	$(window).scroll(function() {
 		if ($(window).scrollTop()>142 ) {
 			if (parseInt($(".headerDiv.dark").css("top"))===-82) {
@@ -78,11 +140,18 @@ $(function() {
 			}
 		} 				
 	});
+	$("#clItems").on("click",".clTdDelete",function () {
+	    setTimeout(function () {
+	        initShoppingCart(true);
+	    },1000);
+    });
 	(function() {
 		initLoginStatus();
-		initShoppingCart();
+	    initShoppingCart(true);
 		initWishList();
 		initMenu();
 		initLoginIframe();
+		initMenuWidth();
+	    initCartList();
 	})();//init
 });

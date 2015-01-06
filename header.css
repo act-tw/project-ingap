@@ -31,6 +31,12 @@ body {
 	color: #393a3a;
 	margin-top: 2px;
 	text-decoration: none;
+    display: block;
+    height: 22px;
+    text-align: center;
+}
+.headerDiv>.toolbar>a>span {
+    white-space: nowrap;
 }
 .headerDiv>.toolbar>span {
 	margin: 0 15px;
@@ -131,4 +137,75 @@ body {
 .loginIframe>iframe {
 	margin: 0 auto;
 	display: block;
+}
+.headerDiv>.toolbar>.cartlist {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    width: 400px;
+    position: fixed;
+    top: 44px;
+    display: none;
+    z-index: 100;
+}
+.headerDiv>.toolbar>.cartlist * {
+    font-size: 12px;
+}
+.headerDiv>.toolbar>.cartlist .cartheader {
+    position: relative;
+    height: 50px;
+    line-height: 50px;
+    font-weight: bold;
+}
+.headerDiv>.toolbar>.cartlist .cartheader .captionleft {
+    position: absolute;
+    left: 0;
+    text-align: left;
+    padding: 0 20px;
+}
+.headerDiv>.toolbar>.cartlist .cartheader .captionfight {
+    position: absolute;
+    left: 200px;
+    text-align: left;
+    padding: 0 20px;
+}
+.headerDiv>.toolbar>.cartlist .shoppingCartItem {
+    overflow-x: hidden;
+    margin: 10px 0;
+    max-height: 400px;
+}
+.headerDiv>.toolbar>.cartlist .cartcontent {
+    width: 100%;
+}
+.headerDiv>.toolbar>.cartlist .cartcontent td.cartleft {
+    width: 200px;
+    text-align: center;
+}
+.headerDiv>.toolbar>.cartlist .cartcontent .itemImg {
+    width: 150px;
+    height: auto;
+    margin: 2px;
+}
+.headerDiv>.toolbar>.cartlist .cartcontent td.cartright {
+    text-align: left;
+}
+.headerDiv>.toolbar>.cartlist .cartcontent .itemPrice {
+    color: #666;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+}
+.headerDiv>.toolbar>.cartlist .cartfooter {
+    background-color: #000;
+    color: #fff;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    border: 1px solid #fff;
+    text-align: right;
+}
+.headerDiv>.toolbar>.cartlist .cartfooter .btncheckout {
+    background-color: #fff;
+    margin: 0 20px;
+    padding: 5px 20px;
+    color: black;
 }
