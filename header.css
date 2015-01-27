@@ -23,16 +23,16 @@ body {
 	background-color: transparent;
 	border-bottom: 1px solid #393a3a;
 	outline: none;
+	font-size: 10px;
 }
 .headerDiv>.toolbar>a {
-	font-size: 15px;
+	font-size: 12px;
 	font-family: arial;
-	font-weight: bold;
 	color: #393a3a;
 	margin-top: 2px;
 	text-decoration: none;
     display: block;
-    height: 22px;
+    height: 33px;
     text-align: center;
 }
 .headerDiv>.toolbar>a>span {
@@ -91,7 +91,7 @@ body {
 	background-color:rgba(238,238,236,0.8);
 	position:fixed;
 	width: 100%;
-	z-index:10;
+	z-index:100;
 	top:-82px;
 }
 .headerDiv.dark>.logo {
@@ -140,10 +140,10 @@ body {
 }
 .headerDiv>.toolbar>.cartlist {
     background-color: #fff;
-    border: 1px solid #ccc;
+    border: 1px solid #000;
     width: 400px;
     position: fixed;
-    top: 44px;
+    top: 55px;
     display: none;
     z-index: 100;
 }
@@ -161,12 +161,18 @@ body {
     left: 0;
     text-align: left;
     padding: 0 20px;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    margin-top: 17px;
 }
 .headerDiv>.toolbar>.cartlist .cartheader .captionfight {
     position: absolute;
-    left: 200px;
+    left: 250px;
     text-align: left;
     padding: 0 20px;
+    font-weight: normal;
+    font-size: 14px;
 }
 .headerDiv>.toolbar>.cartlist .shoppingCartItem {
     overflow-x: hidden;
@@ -188,24 +194,27 @@ body {
 .headerDiv>.toolbar>.cartlist .cartcontent td.cartright {
     text-align: left;
 }
+.headerDiv>.toolbar>.cartlist .cartcontent .itemMerName,.headerDiv>.toolbar>.cartlist .cartcontent .itemColor {
+    margin-bottom: 10px;
+}
 .headerDiv>.toolbar>.cartlist .cartcontent .itemPrice {
-    color: #666;
+    color: #000;
     font-size: 14px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: normal;
 }
 .headerDiv>.toolbar>.cartlist .cartfooter {
-    background-color: #000;
+    background-color: #333;
     color: #fff;
     height: 40px;
     line-height: 40px;
     position: relative;
     border: 1px solid #fff;
-    text-align: right;
+    margin: 2px;
+    padding-left: 16px;
 }
 .headerDiv>.toolbar>.cartlist .cartfooter .btncheckout {
-    background-color: #fff;
-    margin: 0 20px;
-    padding: 5px 20px;
-    color: black;
+    padding: 0 20px;
+    color: white;
+    float: right;
 }

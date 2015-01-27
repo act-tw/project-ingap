@@ -1,4 +1,11 @@
 function initShoppingCart(init) {
+    function formatNumber(str) {
+        if (str.length <= 3) {
+            return str;
+        } else {
+            return formatNumber(str.substr(0, str.length - 3)) + ',' + str.substr(str.length - 3);
+        }
+    }
     $.getJSON("../Common/CartList.ashx", function(data) {
         var count = 0;
         var price = 0;
@@ -11,16 +18,23 @@ function initShoppingCart(init) {
             html += "<td align=\"left\" class=\"cartright\">";
             html += "<div class=\"itemMerName\">" + data[i].MerName + "</div>";
             html += "<div class=\"itemColor\">" + data[i].Color + "</div>";
-            html += "<div class=\"itemMerNo\">" + data[i].MerNo1 + "</div>";
-            html += "<div class=\"itemSize\">" + data[i].Size + "</div>";
-            html += "<div class=\"itemPrice\">特惠價: " + data[i].Price + "元</div>";
+            html += "<div class=\"itemPrice\">NT$" + formatNumber(data[i].Price.toString()) + "</div>";
             html += "</td></tr>";
         }
         $(".mybagcount").text(count);
         $(".mybagcountprice").text(price);
-        $(".cartcontent").html(html === "" ? "<tr><td colspan=\"2\" align=\"center\">Bag is empty.</td></tr>" : html);
+        $(".cartcontent").html(html);
+        if (html === "") {
+            $(".captionleft").html("YOUR BASKET IS<br>EMPTY.");
+        } else {
+            $(".captionleft").html("YOUR BASKET");
+        }
         if (init !== true) {
-            $(".cartlist").slideDown().delay(2000).slideUp();
+            var $link = $("a[href='../Shop/cartList.aspx']");
+            $link.mouseenter();
+            setTimeout(function () {
+                $link.mouseleave();
+            }, 2000);
         }
     });
 }
@@ -67,6 +81,7 @@ $(function() {
 				html += "src=\"../common/login.aspx\" ";
 				html += "></div>";
 				$("body").append(html);
+			    $(".loginIframe").css({ "margin-top": -20, "opacity": 0 }).animate({ "margin-top": 0, "opacity": 1 });
 				$(window).resize();
 				e.preventDefault();
 			}
@@ -91,24 +106,42 @@ $(function() {
 	        var html = "";
 	        html += "<div class=\"cartlist\">";
 	        html += "<div class=\"cartheader\">";
-	        html += "<span class=\"captionleft\">MY BAG</span>";
-	        html += "<span class=\"captionfight\">ITEMS(<span class=\"mybagcount\">0</span>)</span>";
+	        html += "<span class=\"captionleft\">YOUR BASKET</span>";
+	        html += "<span class=\"captionfight\">ITEMS ( <span class=\"mybagcount\">0</span> )</span>";
 	        html += "</div>";
 	        html += "<div class=\"shoppingCartItem\">";
 	        html += "<table class=\"cartcontent\"></table>";
 	        html += "</div>";
 	        html += "<div class=\"cartfooter\">TOTAL: $<span class=\"mybagcountprice\">0</span>";
-	        html += "<a href=\"../Shop/cartList.aspx\" class=\"btncheckout\">CHECKOUT(<span class=\"mybagcount\">0</span>)</a>";
+	        html += "<a href=\"../Shop/cartList.aspx\" class=\"btncheckout\">CHECKOUT ( <span class=\"mybagcount\">0</span> )</a>";
 	        html += "</div>";
 	        html += "</div>";
 	        $(".headerDiv>.toolbar").append(html);
 	    }
+	    var sid = null;
 	    var eventHander = {
-	        mouseenter: function () {
-	            $(this).parent().find(".cartlist").show();
+	        mouseenter: function() {
+	            if (sid) {
+	                clearTimeout(sid);
+	            } else {
+	                if ($(this).parent().find(".cartlist").is(":hidden")) {
+	                    $(this).parent().find(".cartlist").show().css({ "margin-top": -20, "opacity": 0 }).stop().animate({ "margin-top": 0, "opacity": 1 });
+	                }
+	            }
+	            sid = null;
 	        },
 	        mouseleave: function () {
-	            $(this).parent().find(".cartlist").hide();
+	            var $this = $(this);
+	            sid = setTimeout(function () {
+	                if ($this.parent().find(".cartlist").is(":visible")) {
+	                    $this.parent().find(".cartlist").show().css({ "margin-top": 0, "opacity": 1 }).stop().animate({ "margin-top": -20, "opacity": 0 }, function() {
+	                        $(this).hide();
+	                        sid = null;
+	                    });
+	                } else {
+	                    sid = null;
+	                }
+	            }, 500);
 	        }
 	    };
 	    $("a[href='../Shop/cartList.aspx']").on(eventHander);
