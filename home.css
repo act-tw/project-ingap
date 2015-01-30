@@ -93,25 +93,28 @@ body {
 	position: absolute;
 }
 .homeDiv>.blockDiv1>.control {
-	margin-top: 55px;
-	margin-right: 70px;
+	margin-top: -30px;
 	height: 60px;
-	min-width: 1200px;
+    padding-bottom: 85px;
 }
 .homeDiv>.blockDiv1>.control>div {
-	float: right;
+    left: 50%;
+    position: relative;
+    display: inline-block;
 }
 .homeDiv>.blockDiv1>.control>.flag {
 	background-image: url(http://www.ingapphoto.com.tw/INGAP/Home/Top/a2.png);
 	width:27px;
 	height:34px;
 	cursor: pointer;
+    display: none;
 }
 .homeDiv>.blockDiv1>.control>.flag.left {
 	background-image: url(http://www.ingapphoto.com.tw/INGAP/Home/Top/a1.png);
 }
 .homeDiv>.blockDiv1>.control>.navinum {
 	margin-top:-14px;
+    display: none;
 }
 .homeDiv>.blockDiv1>.control>.navinum>span {
 	font-size: 40px;
@@ -125,18 +128,21 @@ body {
 .homeDiv>.blockDiv1>.control>.navinum>.spline {
 	color: #8B8B8B;
 }
-.homeDiv>.blockDiv1>.control>.navidot {
-	margin-right: 20px;
-	max-width: 155px;
-}
 .homeDiv>.blockDiv1>.control>.navidot>div {
 	width: 11px;
 	height: 11px;
 	background-color: #8B8B8B;
 	float: left;
-	border-radius: 11px;
-	margin: 3px 3px;
+	margin: 0;
 	cursor: pointer;
+    font-size: 12px;
+    color: white;
+    padding: 3px;
+    margin-right: 10px;
+    text-align: center;
+    line-height: 12px;
+
+
 }
 .homeDiv>.blockDiv1>.control>.navidot>div.active {
 	background-color: black;

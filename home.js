@@ -144,9 +144,10 @@ $(function() {
 				if (i+1===data.length) {
 					html += " class=\"active\"";
 				}
-				html+=">&nbsp;</div>";
+				html += ">" + (data.length-i) + "</div>";
 			}
 			$control.find(".navidot").html(html);
+		    $control.find(".navidot").css("margin-left", -parseInt($control.find(".navidot").width() / 2));
 			$control.find(".navidot>div").click(function() {
 				var index = $(this).index();
 				move(index);
