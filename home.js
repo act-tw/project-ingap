@@ -1,11 +1,36 @@
 $(function() {
+	function getCookie(name) {
+	    var i, x, y, aRRcookies = document.cookie.split(";");
+	    for (i = 0; i < aRRcookies.length; i++) {
+	        x = aRRcookies[i].substr(0, aRRcookies[i].indexOf("="));
+	        y = aRRcookies[i].substr(aRRcookies[i].indexOf("=") + 1);
+	        x = x.replace(/^\s+|\s+$/g, "");
+	        if (x == name) {
+	            return unescape(y);
+	        }
+	    }
+	    return undefined;
+	}
+
+	function setCookie(name, value, exdays) {
+	    var exdate = new Date();
+	    exdate.setDate(exdate.getDate() + exdays);
+	    var cvalue = escape(value) + ((exdays === null) ? "" : "; expires=" + exdate.toUTCString());
+	    document.cookie = name + "=" + cvalue;
+	}	
+
+
 	var dataUrl="../shop/customuc/c51ingap201412/data/";
 	$.ajax({
 		url: dataUrl,
 		dataType: "json",
 		success: function(data) {
-			initWelcome(data.brandList);
-			initBlock1(data.blockList1);
+		    if (getCookie("welcomepage") === undefined || getCookie("welcomepage") === null) {
+		        $(".welcomeDiv").show();
+		        initWelcome(data.brandList);
+		        setCookie("welcomepage", "true");
+		    }
+		    initBlock1(data.blockList1);
 			initBlock2(data.blockList2);
 			initBlock3(data.blockList3);
 			initBlock4(data.blockList4);

@@ -14,7 +14,8 @@ body {
 	left: 0;
 	z-index: 211;	
 	background-color: white;
-	background-image: url(http://www.ingapphoto.com.tw/INGAP/Open%20page/Background.png);	
+	background-image: url(http://www.ingapphoto.com.tw/INGAP/Open%20page/Background.png);
+    display: none;
 }
 .welcomeDiv>.sloganDiv {
 	position: relative;
