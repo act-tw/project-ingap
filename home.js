@@ -49,7 +49,8 @@ $(function() {
 				count++;
 			}
 			$(".brandDiv").html(html);
-			$(".brandDiv>div").css("width",100/count+"%");
+			$(".brandDiv>div").css("width",120);
+			$(".brandDiv").css({"left":"50%","margin-left":$(".brandDiv").width()/-2});
 			$(".brandDiv>div>a>img").load(function() {
 				$(this).parent().parent().css("min-width",$(this).width());
 				if ($(".brandDiv").attr("style")===undefined) {
@@ -283,10 +284,11 @@ $(function() {
 			html += "<div class=\"brand\">" + data[i].brand + "</div>";
 			html += "<div class=\"text\">" + data[i].text + "</div>";
 			html += "<div class=\"price\">";
-			if (data[i].originPrice && data[i].originPrice>0) {
-				html += "<span class=\"origin\">NT:$" + formatNumber(data[i].originPrice.toString()) + "</span>";	
-			}
-			html += "<span>NT:$" + formatNumber(data[i].price.toString()) + "</span>";
+			//if (data[i].originPrice && data[i].originPrice>0) {
+			//    html += "<span class=\"origin\">NT:$" + formatNumber(data[i].originPrice.toString()) + "</span>";	
+			//}
+			//html += "<span>NT:$" + formatNumber(data[i].price.toString()) + "</span>";
+			html += "<span>NT:$" + formatNumber(data[i].originPrice.toString()) + "</span>";
 			html += "</div>";
 			html += "</div>";
 		}

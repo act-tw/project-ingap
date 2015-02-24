@@ -36,7 +36,6 @@ body {
 .welcomeDiv>.brandDiv {
 	position: absolute;
 	top:75%;
-	width:100%;
 }
 .welcomeDiv>.brandDiv>div {
 	display: inline-block;
