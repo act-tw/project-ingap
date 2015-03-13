@@ -35,7 +35,7 @@ $(function() {
             'width': '195px'
         }, 250);
         $('.block3').animate({
-            'width': '250px'
+            'width': '268px'
         }, 250);
         $('.block4').animate({
             'width': '160px'

@@ -217,7 +217,7 @@ $(function() {
 		$(".w200h200>a,.w400h400>a,.w800h400>a").on("mouseenter mouseleave",function() {
 			swap($(this).find(">img"));
 		});
-		setTimeout(run,3000);
+		//setTimeout(run,3000);
 	}
 	function initBlock3(data) {
 		function run() {

@@ -50,7 +50,7 @@ $(function() {
 		$.getJSON("../Common/LoginStatus.ashx",function(data){
 			if (data !== null && data.IsLogin) {
 				$(".loginlogout").attr("href","../common/loginout.aspx");
-				$(".loginlogout>span").attr("text","會員登出").text("SIGN OUT");
+				$(".loginlogout>span").attr("text", "會員登出").text("SIGN OUT");
 			}
 		}); 				
 	}
