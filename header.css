@@ -9,15 +9,19 @@ body {
 .headerDiv>.toolbar {
 	overflow: hidden;
 	position: absolute;
-	right: 100px;
-	top: 20px;
+	right: 35px;
+	top: 13px;
+	height: 43px;
 }
 .headerDiv>.toolbar>* {
 	float:left;
 }
-.headerDiv>.toolbar>form>.search {
+.headerDiv>.toolbar form {
+	float:right;
+}
+.headerDiv>.toolbar form>.search {
 	height: 20px;
-	margin: 0 15px 0 5px;
+	margin: 0 10px 0 5px;
 	padding: 0 20px;
 	border: 0;
 	background-color: transparent;
@@ -87,12 +91,11 @@ body {
 	color: #393a3a;
 }
 .headerDiv.dark {
-	height:78px;
+	height:auto;
 	background-color:rgba(238,238,236,0.8);
 	position:fixed;
 	width: 100%;
 	z-index:100;
-	top:-82px;
 }
 .headerDiv.dark>.logo {
 	padding-top: 6px;
@@ -217,4 +220,19 @@ body {
     padding: 0 20px;
     color: white;
     float: right;
+}
+
+.headerDiv>.toolbar>div {
+	float: right;
+	margin-right: -2px;
+  	margin-top: -14px;
+}
+
+.headerDiv>.toolbar>div>.icon {
+	float: right;
+	margin-left: 10px;
+}
+
+.headerDiv>.toolbar>.clearboth {
+	clear: both;
 }

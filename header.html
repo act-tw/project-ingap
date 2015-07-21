@@ -1,22 +1,120 @@
+<html>
+<head></head>
+<link rel="stylesheet" type="text/css" href="header.css"/>
+<style>
+/* 非專業人員，請勿亂修改哦！ */
+#ctl00_ContentPlaceHolder1_Button1.ButtonStyle.clBtnLeft {
+  width: 200px;
+}
+
+.headerDiv.dark {
+  background-color:white;
+}
+
+.headerDiv.dark>.menu {
+  background-color:white;
+  box-shadow: 0px 5px 5px rgba(0,0,0,0.5);
+}
+
+.headerDiv.dark>.menu>a,.headerDiv.dark>.menu>span {
+  color:#393a3a;
+}
+
+.headerDiv.dark>.toolbar>.cartlist,.headerDiv>.toolbar>.cartlist {
+  margin-left: 62px;
+}
+
+.headerDiv.dark>.menu>a:hover {
+  background-color: #393a3a;
+  color: white;
+  transition: background-color 0.5s,color 0.5s;
+}
+
+.headerDiv>.toolbar>span {
+  font-size: 12px;
+}
+
+.headerDiv.dark>.menu {
+  box-shadow: 0px 5px 5px rgba(0,0,0,0.2);
+}
+
+#clItems {
+  background-color: white;
+}
+
+
+/* 20150325 add start */
+
+form[action='useradmin.aspx'] .CustomTableHeader, form[action='useradmin.aspx'] .ButtonStyle {
+  background-color: #3d3d3d;
+  color: white;
+}
+
+form[action='useradmin.aspx'] .CustomTableStyle {
+  margin-top: 30px;
+}
+
+/* 20150325 add end */
+
+#ctl00_ContentPlaceHolder1_ilItems {
+  min-width:800px;
+}
+</style>
+<body>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="header.js"></script>
+<div id="logoBar">
+
+
+
+
+
+
+
+
 <link rel="stylesheet" type="text/css" href="../shop/customuc/c51ingap201412/css/header.css"/>
 <script src="../shop/customuc/c51ingap201412/js/header.js"></script>
 <div class="headerDiv">
-	<div class="toolbar">
-		<img src="http://www.ingapphoto.com.tw/INGAP/Top/Search.png">
-		<form name="formSc" action="../shop/itemlist.aspx" method="get">
-			<input class="search" type="text" placeholder="SEARCH" name="ctl00$edtSearch">
-		</form>
-		<a href="../Common/login.aspx" class="loginlogout"><span text="會員登入">SIGN IN</span></a>
-		<span>|</span>
-		<a href="../Member/findorder.aspx"><span text="訂單查詢">ORDERS</span></a>
-		<span>|</span>
-		<a href="../Shop/cartList.aspx"><span text="購物車">BAG</span>(<span class="mybagcount">0</span>)</a>
-		<span>|</span>
-		<a href="../Shop/itemFav.aspx"><span text="加入蒐藏">WISHLIST</span>(<span class="mywishlistcount">0</span>)</a>
-	</div>
-	<div class="logo">
-		<a class="biglogo" href="../Shop"><img src="http://www.ingapphoto.com.tw/INGAP/Top/INGAPlogo_b.png"></a>
-		<a class="smalllogo" href="../Shop"><img src="http://www.ingapphoto.com.tw/INGAP/Top/INGAPlogo_s.png"></a>
-	</div>
-	<div class="menu">&nbsp;</div>
+    <div class="toolbar">
+        <a href="../Common/login.aspx" class="loginlogout"><span text="SIGN IN">會員登入</span></a>
+        <span>|</span>
+        <a href="../Member/findorder.aspx"><span text="ORDERS">訂單查詢</span></a>
+        <span>|</span>
+        <a href="../Shop/cartList.aspx"><span text="BAG">購物車</span>(<span class="mybagcount">0</span>)</a>
+        <span>|</span>
+        <a href="../Shop/itemFav.aspx"><span text="WISHLIST">加入蒐藏</span>(<span class="mywishlistcount">0</span>)</a>
+        <span>|</span>
+        <a href="../Member/useradmin.aspx"><span text="MY INGAP">會員中心</span></a>
+        <span>|</span>
+        <a href="../Member/useradmin.aspx"><span text="切換至行動版">切換至行動版</span></a>
+        <div class="clearboth">&nbsp;</div>
+        <div>
+            <a href="https://www.facebook.com/ingapfashion" target="_blank" class="icon"><img src="http://www.ingapphoto.com.tw/ingap/element/fb.png"></a>
+            <a href="../common/syNsShow.aspx?id=23&g=qaGroup2" class="icon"><img src="http://www.ingapphoto.com.tw/ingap/element/os.png"></a>
+            <img src="http://www.ingapphoto.com.tw/INGAP/Top/Search.png" alt="" />
+            <form name="formSc" action="../shop/itemlist.aspx" method="get">
+                <input class="search" type="text" placeholder="SEARCH" name="ctl00$edtSearch" />
+            </form>
+        </div>
+    </div>
+    <div class="logo">
+        <a class="biglogo" href="../Shop"><img src="http://www.ingapphoto.com.tw/INGAP/Top/INGAPlogo_b.png" alt="" /></a>
+        <a class="smalllogo" href="../Shop"><img src="http://www.ingapphoto.com.tw/INGAP/Top/INGAPlogo_s.png" alt="" /></a>
+    </div>
+    <div class="menu">&nbsp;</div>
 </div>
+
+
+
+
+
+
+
+
+
+
+</div>
+<div id="container" class="DefFont" style="height:2000px;"></div>
+<div class="DefFont"></div>
+</body>
+</html>
