@@ -1,0 +1,64 @@
+<link rel="stylesheet" type="text/css" href="../shop/customuc/c51ingap201412/css/home.css" /> <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.12/jquery.mousewheel.min.js"></script> <script src="../shop/customuc/c51ingap201412/js/home.js"></script>
+<div class="welcomeDiv">
+<div class="sloganDiv"><img class="sloganImg" src="http://www.ingapphoto.com.tw/INGAP/Open page/Slogan ideas.png" alt="" /></div>
+<div class="logoDiv"><img class="logoImg" src="http://www.ingapphoto.com.tw/INGAP/Open page/Openlogo.png" alt="" /></div>
+<div class="brandDiv">&nbsp;</div>
+<div class="scrollDownDiv">&nbsp;</div>
+</div>
+<div class="homeDiv">
+<div class="naviDiv">
+<div>
+<div class="navi navi1">&nbsp;</div>
+<div class="text text1">&nbsp;</div>
+</div>
+<div>
+<div class="navi navi2">&nbsp;</div>
+<div class="text text2">&nbsp;</div>
+</div>
+<div>
+<div class="navi navi3">&nbsp;</div>
+<div class="text text3">&nbsp;</div>
+</div>
+<div>
+<div class="navi navi4 end">&nbsp;</div>
+<div class="text text4">&nbsp;</div>
+</div>
+</div>
+<div class="blockDiv1">
+<div class="box">&nbsp;</div>
+<div class="control">
+<div class="flag right">&nbsp;</div>
+<div class="navinum"><span class="current">01</span> 				<span class="spline">/</span> 				<span class="total">&nbsp;</span></div>
+<div class="flag left">&nbsp;</div>
+<div class="navidot">&nbsp;</div>
+</div>
+</div>
+<div class="blockDiv2"><img class="titleImg" src="http://www.ingapphoto.com.tw/INGAP/Home/TOPIC SALES/2T.png" alt="" />
+<div class="row">
+<div class="floatLeft w400h400">&nbsp;</div>
+<div class="floatLeft w400h400">&nbsp;</div>
+<div class="floatLeft w400h400">&nbsp;</div>
+</div>
+<div class="row">
+<div class="floatLeft w400h400">
+<div class="floatLeft w200h200">&nbsp;</div>
+<div class="floatLeft w200h200">&nbsp;</div>
+<div class="floatLeft w200h200">&nbsp;</div>
+<div class="floatLeft w200h200">&nbsp;</div>
+</div>
+<div class="floatLeft w800h400">&nbsp;</div>
+</div>
+<div class="row">
+<div class="floatLeft w800h400">&nbsp;</div>
+<div class="floatLeft w400h400">&nbsp;</div>
+</div>
+</div>
+<div class="blockDiv3"><img class="titleImg" src="http://www.ingapphoto.com.tw/INGAP/Home/NEW ARRIVAL/3T.png" alt="" />
+<div class="row">
+<div class="inbox">&nbsp;</div>
+</div>
+</div>
+<div class="blockDiv4"><img class="titleImg" src="http://www.ingapphoto.com.tw/INGAP/Home/RANKINGS/4T.png" alt="" />
+<div class="row">&nbsp;</div>
+</div>
+</div>

@@ -76,12 +76,12 @@ $(function() {
 			});
 			$("body").css("overflow","hidden");
 			function hideWelcomeDiv() {
-				/*
+				
 				$("body").css("overflow","auto");
 				$(".welcomeDiv").animate({"margin-top":-$(window).height()},function() {
 					$(".welcomeDiv").hide();
 				});
-				*/
+				
 			}
 			$(".scrollDownDiv").click(hideWelcomeDiv);
 			setTimeout(hideWelcomeDiv,5000);
